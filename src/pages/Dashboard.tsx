@@ -99,6 +99,10 @@ const SOURCE_TO_ANT: Record<string, string> = {
 
 const COMMENTS_PER_PAGE = 25;
 
+// Orden lógico del ciclo de vida: menos de 6 meses → más de 6 meses → ex colaboradores
+const SOURCE_ORDER = ['0-6 Meses', '+6 Meses', 'Ex Colaboradores'];
+const sourceRank = (s: string) => { const i = SOURCE_ORDER.indexOf(s); return i === -1 ? 99 : i; };
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -110,7 +114,7 @@ export default function Dashboard() {
 
   const stats = useMemo(() => enpsStats(records), [records]);
   const byType = useMemo(() =>
-    FILTER_OPTIONS.source.map(src => {
+    [...FILTER_OPTIONS.source].sort((a, b) => sourceRank(a) - sourceRank(b)).map(src => {
       const s = enpsStats(records.filter(r => r.source === src));
       return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
     }).filter(d => d.total > 0)

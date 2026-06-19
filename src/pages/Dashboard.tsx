@@ -260,7 +260,7 @@ export default function Dashboard() {
       <div style={{ padding: `${GAP}px ${GAP}px 40px`, display: 'flex', flexDirection: 'column', gap: GAP }}>
 
       {/* ═══ KPI ROW ═══ */}
-      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP, alignItems: 'stretch' }}>
 
         {/* Total participantes */}
         <Card delay={0}>
@@ -322,9 +322,10 @@ export default function Dashboard() {
         </Card>
 
         {/* eNPS por Antigüedad */}
-        <Card delay={0.12}>
+        <Card delay={0.12} style={{ display: 'flex', flexDirection: 'column' }}>
           <CardTitle title="eNPS por Antigüedad" sub="Click en una barra para filtrar el reporte" />
-          <ResponsiveContainer width="100%" height={150}>
+          <div style={{ flex: 1, minHeight: 0 }}>
+          <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={byType} margin={{ top: 20, right: 40, left: -24, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />
@@ -354,6 +355,7 @@ export default function Dashboard() {
                 label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => v }} />
             </ComposedChart>
           </ResponsiveContainer>
+          </div>
         </Card>
       </div>
 

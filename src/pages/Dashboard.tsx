@@ -117,6 +117,18 @@ const COMMENTS_PER_PAGE = 25;
 const SOURCE_ORDER = ['0-6 Meses', '+6 Meses', 'Ex Colaboradores'];
 const sourceRank = (s: string) => { const i = SOURCE_ORDER.indexOf(s); return i === -1 ? 99 : i; };
 
+// Redacción orientada a retención: traduce el tema de VoE a una palanca accionable
+// que responde "¿qué habría evitado su desvinculación?".
+const RETENTION_LABELS: { [tema: string]: string } = {
+  'Compensación y equidad': 'Compensación y beneficios competitivos',
+  'Desarrollo y crecimiento': 'Oportunidades de crecimiento y desarrollo',
+  'Liderazgo y gestión': 'Mejor liderazgo y gestión de equipos',
+  'Clima y relaciones': 'Clima laboral y relaciones sanas',
+  'Carga laboral y bienestar': 'Carga de trabajo y bienestar equilibrados',
+  'Estabilidad y propósito': 'Estabilidad laboral y propósito claro',
+  'Valoración global': 'Mayor reconocimiento y valoración',
+};
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -559,7 +571,7 @@ export default function Dashboard() {
                 <Card delay={0.08}>
                   <CardTitle title="¿Cómo evitar la desvinculación?" sub="Lo que pudo retenerlos, según sus respuestas, de más a menos frecuente" />
                   <RankedBars
-                    items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
+                    items={exThemes.map(t => ({ label: RETENTION_LABELS[t.tema] ?? t.tema, value: t.count }))}
                     total={exThemes.reduce((a, t) => a + t.count, 0)}
                     demoteLast={['Ninguna', 'Otros']}
                   />

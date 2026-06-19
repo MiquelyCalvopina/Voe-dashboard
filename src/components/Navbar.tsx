@@ -100,7 +100,7 @@ export default function Navbar() {
             {/* Separator — 8px de distancia a cada lado */}
             <span
               style={{
-                fontSize: '12px',
+                fontSize: '14px',
                 color: '#cccccc',
                 marginLeft: '8px',
                 marginRight: '8px',

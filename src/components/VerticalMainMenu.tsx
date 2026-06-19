@@ -30,6 +30,7 @@ export default function Sidebar() {
         display: 'flex',
         flexDirection: 'column',
         zIndex: 100,
+        borderRight: '1px solid #f0f0f0',
       }}
     >
       <div

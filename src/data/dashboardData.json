@@ -1,0 +1,5671 @@
+{
+  "summary": {
+    "combined": {
+      "enps": 56,
+      "total": 378,
+      "promoters": 241,
+      "detractors": 30,
+      "neutrals": 107,
+      "pct_promoters": 63.8,
+      "pct_detractors": 7.9,
+      "pct_neutrals": 28.3
+    },
+    "ex": {
+      "enps": 60,
+      "total": 55,
+      "promoters": 35,
+      "detractors": 2,
+      "neutrals": 18,
+      "pct_promoters": 63.6,
+      "pct_detractors": 3.6,
+      "pct_neutrals": 32.7
+    },
+    "new06": {
+      "enps": 64,
+      "total": 58,
+      "promoters": 39,
+      "detractors": 2,
+      "neutrals": 17,
+      "pct_promoters": 67.2,
+      "pct_detractors": 3.4,
+      "pct_neutrals": 29.3
+    },
+    "senior": {
+      "enps": 53,
+      "total": 265,
+      "promoters": 167,
+      "detractors": 26,
+      "neutrals": 72,
+      "pct_promoters": 63.0,
+      "pct_detractors": 9.8,
+      "pct_neutrals": 27.2
+    },
+    "total_participants": 378
+  },
+  "enps_by_type": [
+    {
+      "type": "Ex Colaboradores",
+      "label": "Ex Colab.",
+      "enps": 60,
+      "total": 55,
+      "promoters": 35,
+      "detractors": 2,
+      "neutrals": 18,
+      "pct_promoters": 63.6,
+      "pct_detractors": 3.6,
+      "pct_neutrals": 32.7
+    },
+    {
+      "type": "Colaboradores 0-6 Meses",
+      "label": "0-6 Meses",
+      "enps": 64,
+      "total": 58,
+      "promoters": 39,
+      "detractors": 2,
+      "neutrals": 17,
+      "pct_promoters": 67.2,
+      "pct_detractors": 3.4,
+      "pct_neutrals": 29.3
+    },
+    {
+      "type": "Colaboradores +6 Meses",
+      "label": "+6 Meses",
+      "enps": 53,
+      "total": 265,
+      "promoters": 167,
+      "detractors": 26,
+      "neutrals": 72,
+      "pct_promoters": 63.0,
+      "pct_detractors": 9.8,
+      "pct_neutrals": 27.2
+    }
+  ],
+  "themes": [
+    {
+      "tema": "Otros",
+      "count": 126
+    },
+    {
+      "tema": "Liderazgo",
+      "count": 66
+    },
+    {
+      "tema": "Clima",
+      "count": 65
+    },
+    {
+      "tema": "Procesos",
+      "count": 43
+    },
+    {
+      "tema": "Comunicación",
+      "count": 31
+    },
+    {
+      "tema": "Compensación",
+      "count": 27
+    },
+    {
+      "tema": "Desarrollo",
+      "count": 20
+    }
+  ],
+  "sentiments": [
+    {
+      "sentimiento": "Positivo",
+      "count": 167
+    },
+    {
+      "sentimiento": "Neutral",
+      "count": 118
+    },
+    {
+      "sentimiento": "Muy positivo",
+      "count": 29
+    },
+    {
+      "sentimiento": "Negativo",
+      "count": 55
+    },
+    {
+      "sentimiento": "Muy negativo",
+      "count": 9
+    }
+  ],
+  "demographics": {
+    "gender": [
+      {
+        "label": "Femenino",
+        "value": 220
+      },
+      {
+        "label": "Masculino",
+        "value": 158
+      }
+    ],
+    "area": [
+      {
+        "label": "Negocios e Inmobiliario",
+        "value": 108
+      },
+      {
+        "label": "Canales y Agencias",
+        "value": 78
+      },
+      {
+        "label": "Operaciones",
+        "value": 46
+      },
+      {
+        "label": "Credito y Cobranzas",
+        "value": 37
+      },
+      {
+        "label": "Riesgos",
+        "value": 25
+      },
+      {
+        "label": "Tecnologia",
+        "value": 22
+      },
+      {
+        "label": "Finanzas y Administracion",
+        "value": 18
+      },
+      {
+        "label": "Talento Humano y Cultura",
+        "value": 16
+      },
+      {
+        "label": "Marketing y Experiencia",
+        "value": 15
+      },
+      {
+        "label": "Legal y Cumplimiento",
+        "value": 9
+      },
+      {
+        "label": "Auditoria Interna",
+        "value": 2
+      },
+      {
+        "label": "Gerencia General",
+        "value": 2
+      }
+    ],
+    "generation": [
+      {
+        "label": "Millenial",
+        "value": 222
+      },
+      {
+        "label": "Generacion X",
+        "value": 119
+      },
+      {
+        "label": "Generacion Z",
+        "value": 29
+      },
+      {
+        "label": "Baby Boomer",
+        "value": 8
+      }
+    ],
+    "antiguedad": [
+      {
+        "label": "Ex colaborador",
+        "value": 55
+      },
+      {
+        "label": "Menos de 6 meses",
+        "value": 58
+      },
+      {
+        "label": "Mas de 6 meses",
+        "value": 265
+      }
+    ],
+    "ciudad": [
+      {
+        "label": "Quito",
+        "value": 254
+      },
+      {
+        "label": "Guayaquil",
+        "value": 22
+      },
+      {
+        "label": "Portoviejo",
+        "value": 17
+      },
+      {
+        "label": "Manta",
+        "value": 16
+      },
+      {
+        "label": "Ambato",
+        "value": 15
+      },
+      {
+        "label": "Machala",
+        "value": 10
+      },
+      {
+        "label": "Ibarra",
+        "value": 9
+      },
+      {
+        "label": "Quevedo",
+        "value": 8
+      }
+    ]
+  },
+  "factors": {
+    "ex": {
+      "bottom": [
+        {
+          "label": "La recepción del acta de entrega a Mutualista Pichincha",
+          "score": 3.84
+        },
+        {
+          "label": "El pago correspondiente a liquidación realizado por Mutualista Pichincha",
+          "score": 3.87
+        },
+        {
+          "label": "El chequeo médico posterior a su desvinculación de Mutualista Pichincha",
+          "score": 3.91
+        },
+        {
+          "label": "El proceso de renuncia en Mutualista Pichincha",
+          "score": 3.95
+        },
+        {
+          "label": "La entrevista de salida realizada por Mutualista Pichincha",
+          "score": 4.05
+        }
+      ],
+      "top": [
+        {
+          "label": "La entrevista de salida realizada por Mutualista Pichincha",
+          "score": 4.05
+        },
+        {
+          "label": "El proceso de renuncia en Mutualista Pichincha",
+          "score": 3.95
+        },
+        {
+          "label": "El chequeo médico posterior a su desvinculación de Mutualista Pichincha",
+          "score": 3.91
+        },
+        {
+          "label": "El pago correspondiente a liquidación realizado por Mutualista Pichincha",
+          "score": 3.87
+        },
+        {
+          "label": "La recepción del acta de entrega a Mutualista Pichincha",
+          "score": 3.84
+        }
+      ],
+      "all": [
+        {
+          "label": "La recepción del acta de entrega a Mutualista Pichincha",
+          "score": 3.84
+        },
+        {
+          "label": "El pago correspondiente a liquidación realizado por Mutualista Pichincha",
+          "score": 3.87
+        },
+        {
+          "label": "El chequeo médico posterior a su desvinculación de Mutualista Pichincha",
+          "score": 3.91
+        },
+        {
+          "label": "El proceso de renuncia en Mutualista Pichincha",
+          "score": 3.95
+        },
+        {
+          "label": "La entrevista de salida realizada por Mutualista Pichincha",
+          "score": 4.05
+        }
+      ]
+    },
+    "new06": {
+      "bottom": [
+        {
+          "label": "La entrega del computador, accesos y estación de trabajo fue agil y oportuna",
+          "score": 3.84
+        },
+        {
+          "label": "Los exámenes médicos para el ingreso a Mutualista Pichincha fueron gestionados de forma rápida y sencilla",
+          "score": 3.88
+        },
+        {
+          "label": "Mutualista Pichincha posee una forma objetiva de medir el periodo de prueba",
+          "score": 3.91
+        },
+        {
+          "label": "Mutualista Pichincha me entrego un kit de bienvenida personalizado y práctico",
+          "score": 3.98
+        },
+        {
+          "label": "La recopilacion de documentos para ingresar a Mutualista Pichincha fue sencilla y rápida",
+          "score": 4.0
+        }
+      ],
+      "top": [
+        {
+          "label": "Las pruebas que realice para ingresar a Mutualista Pichincha, estaban en línea con el puesto al que apliqué",
+          "score": 4.07
+        },
+        {
+          "label": "La inducción que recibi al empezar fue apropiada para desempeñar mis funciones",
+          "score": 4.02
+        },
+        {
+          "label": "La recopilacion de documentos para ingresar a Mutualista Pichincha fue sencilla y rápida",
+          "score": 4.0
+        },
+        {
+          "label": "Mutualista Pichincha me entrego un kit de bienvenida personalizado y práctico",
+          "score": 3.98
+        },
+        {
+          "label": "Mutualista Pichincha posee una forma objetiva de medir el periodo de prueba",
+          "score": 3.91
+        }
+      ],
+      "all": [
+        {
+          "label": "La entrega del computador, accesos y estación de trabajo fue agil y oportuna",
+          "score": 3.84
+        },
+        {
+          "label": "Los exámenes médicos para el ingreso a Mutualista Pichincha fueron gestionados de forma rápida y sencilla",
+          "score": 3.88
+        },
+        {
+          "label": "Mutualista Pichincha posee una forma objetiva de medir el periodo de prueba",
+          "score": 3.91
+        },
+        {
+          "label": "Mutualista Pichincha me entrego un kit de bienvenida personalizado y práctico",
+          "score": 3.98
+        },
+        {
+          "label": "La recopilacion de documentos para ingresar a Mutualista Pichincha fue sencilla y rápida",
+          "score": 4.0
+        },
+        {
+          "label": "La inducción que recibi al empezar fue apropiada para desempeñar mis funciones",
+          "score": 4.02
+        },
+        {
+          "label": "Las pruebas que realice para ingresar a Mutualista Pichincha, estaban en línea con el puesto al que apliqué",
+          "score": 4.07
+        }
+      ]
+    },
+    "senior": {
+      "bottom": [
+        {
+          "label": "La retroalimentacion cotidiana es parte de nuestra cultura",
+          "score": 3.53
+        },
+        {
+          "label": "La comunicación que genera la empresa me mantiene informado de acontecimientos relevantes",
+          "score": 3.59
+        },
+        {
+          "label": "Siempre me siento incluido y valorado en los eventos organizados por la empresa",
+          "score": 3.62
+        },
+        {
+          "label": "Siempre puedo acceder a las capacitaciones que considero necesarias para mi desempeño",
+          "score": 3.63
+        },
+        {
+          "label": "Entiendo como se calcula mi remuneración variable",
+          "score": 3.64
+        }
+      ],
+      "top": [
+        {
+          "label": "Conozco los programas de Bienestar que la empresa pone a mi disposicion",
+          "score": 3.88
+        },
+        {
+          "label": "Siempre obtengo autorización a mis solicitudes de ausentismos segun los procedimientos",
+          "score": 3.88
+        },
+        {
+          "label": "La cantidad de visitas y capacitaciones para prevención y gestión de riesgos laborales es adecuada",
+          "score": 3.87
+        },
+        {
+          "label": "El seguro médico ofrece amplia cobertura y respuesta oportuna y rápida",
+          "score": 3.87
+        },
+        {
+          "label": "Mutualista Pichincha ofrece capacitaciones con horarios flexibles y adaptados a mi disponibilidad",
+          "score": 3.85
+        }
+      ],
+      "all": [
+        {
+          "label": "La retroalimentacion cotidiana es parte de nuestra cultura",
+          "score": 3.53
+        },
+        {
+          "label": "La comunicación que genera la empresa me mantiene informado de acontecimientos relevantes",
+          "score": 3.59
+        },
+        {
+          "label": "Siempre me siento incluido y valorado en los eventos organizados por la empresa",
+          "score": 3.62
+        },
+        {
+          "label": "Siempre puedo acceder a las capacitaciones que considero necesarias para mi desempeño",
+          "score": 3.63
+        },
+        {
+          "label": "Entiendo como se calcula mi remuneración variable",
+          "score": 3.64
+        },
+        {
+          "label": "La cantidad de comunicados diarios es la adecuada y necesaria",
+          "score": 3.64
+        },
+        {
+          "label": "El calculo de mi remuneración variable es claro y no tiene errores",
+          "score": 3.65
+        },
+        {
+          "label": "Existe un plan de carrera establecido en Mutualista Pichincha que permite crecer de forma planificada",
+          "score": 3.66
+        },
+        {
+          "label": "Los reconocimientos entregados en la convencion de negocios y canales son justos y equitativos",
+          "score": 3.66
+        },
+        {
+          "label": "Los reconocimientos entregados por el Programa de reconocimiento son justos y equitativos",
+          "score": 3.67
+        },
+        {
+          "label": "Siempre cuento con red e internet estable y disponible mientras trabajo",
+          "score": 3.69
+        },
+        {
+          "label": "La retroalimentacion del desempeño anual es clara y oportuna",
+          "score": 3.69
+        },
+        {
+          "label": "En Mutualista Pichincha se toma en cuenta la experiencia y conocimientos para promocionar cuando hay vacante",
+          "score": 3.69
+        },
+        {
+          "label": "Las herramientas y equipos tecnológicos que me proporcionan son de excelente calidad y se actualizan regularmente",
+          "score": 3.7
+        },
+        {
+          "label": "La herramienta E-Business es util para consultas y requerimientos",
+          "score": 3.71
+        },
+        {
+          "label": "A partir de la medicion de engagement se implementan planes de accion efectivos que incrementan mi compromiso",
+          "score": 3.71
+        },
+        {
+          "label": "Los lideres de la organizacion transmiten claramente la vision y los objetivos estratégicos",
+          "score": 3.72
+        },
+        {
+          "label": "El cumplimiento de la política conozca a su colaborador es claro y sencillo",
+          "score": 3.77
+        },
+        {
+          "label": "Las actividades de prevención ante desastres naturales, incendios, atentados y emergencias son adecuadas",
+          "score": 3.78
+        },
+        {
+          "label": "Puedo acceder a los programas de bienestar sin dificultades",
+          "score": 3.79
+        },
+        {
+          "label": "La asesoría del equipo de SSO para el uso del seguro médico me ayuda a reducir tiempo y esfuerzo",
+          "score": 3.81
+        },
+        {
+          "label": "Siempre obtengo autorización a mis solicitudes de vacaciones segun los procedimientos",
+          "score": 3.82
+        },
+        {
+          "label": "Cuando solicito asesoría tributaria o laboral me atienden con amabilidad y oportunamente",
+          "score": 3.82
+        },
+        {
+          "label": "Siempre que lo necesito puedo acceder a atención medica sin problemas",
+          "score": 3.82
+        },
+        {
+          "label": "La evaluación de desempeño es clara y objetiva",
+          "score": 3.83
+        },
+        {
+          "label": "Me siento a gusto trabajando en las instalaciones de Mutualista Pichincha, son comodas y adecuadas",
+          "score": 3.84
+        },
+        {
+          "label": "Mutualista Pichincha ofrece capacitaciones con horarios flexibles y adaptados a mi disponibilidad",
+          "score": 3.85
+        },
+        {
+          "label": "El seguro médico ofrece amplia cobertura y respuesta oportuna y rápida",
+          "score": 3.87
+        },
+        {
+          "label": "La cantidad de visitas y capacitaciones para prevención y gestión de riesgos laborales es adecuada",
+          "score": 3.87
+        },
+        {
+          "label": "Siempre obtengo autorización a mis solicitudes de ausentismos segun los procedimientos",
+          "score": 3.88
+        },
+        {
+          "label": "Conozco los programas de Bienestar que la empresa pone a mi disposicion",
+          "score": 3.88
+        }
+      ]
+    }
+  },
+  "experience": {
+    "ex": {
+      "proceso de renuncia en Mutualista Pichincha": {
+        "dist": {
+          "Buena": 26,
+          "Wow": 14,
+          "Mala": 2
+        },
+        "avg": 4.24
+      },
+      "recepción dacta de entrega a Mutualista Pichincha": {
+        "dist": {
+          "Buena": 26,
+          "Wow": 14,
+          "Mala": 1
+        },
+        "avg": 4.29
+      },
+      "entrevista de salida realizada por Mutualista Pichincha": {
+        "dist": {
+          "Buena": 14,
+          "Wow": 13,
+          "Mala": 2
+        },
+        "avg": 4.31
+      },
+      "chequeo médico posterior a su desvinculación": {
+        "dist": {
+          "Buena": 19,
+          "Wow": 15
+        },
+        "avg": 4.44
+      },
+      "pago correspondiente a liquidación": {
+        "dist": {
+          "Buena": 28,
+          "Wow": 10,
+          "Mala": 2
+        },
+        "avg": 4.15
+      }
+    },
+    "new06": {
+      "anuncios laborales publicados": {
+        "dist": {
+          "Buena": 20,
+          "Wow": 21,
+          "Mala": 6
+        },
+        "avg": 4.19
+      },
+      "primera llamada que recibio de Mutualista Pichincha en ": {
+        "dist": {
+          "Buena": 21,
+          "Wow": 22,
+          "Mala": 2
+        },
+        "avg": 4.4
+      },
+      "pruebas de evaluación realizadas para su contratación": {
+        "dist": {
+          "Buena": 12,
+          "Wow": 15,
+          "Mala": 1
+        },
+        "avg": 4.46
+      },
+      "entrevistas realizadas para su contratación": {
+        "dist": {
+          "Buena": 24,
+          "Wow": 19,
+          "Mala": 1
+        },
+        "avg": 4.39
+      },
+      "exámenes médicos realizados para su contratación": {
+        "dist": {
+          "Wow": 24,
+          "Buena": 21,
+          "Mala": 5
+        },
+        "avg": 4.28
+      },
+      "gestión para confirmacion y cierre de su contratación": {
+        "dist": {
+          "Wow": 20,
+          "Buena": 21,
+          "Mala": 4
+        },
+        "avg": 4.27
+      },
+      "recopilacion y entrega de documentos para ingresar a Mu": {
+        "dist": {
+          "Buena": 30,
+          "Wow": 17,
+          "Mala": 3
+        },
+        "avg": 4.22
+      },
+      "entrega dkit de bienvenida de Mutualista Pichincha": {
+        "dist": {
+          "Buena": 25,
+          "Wow": 19,
+          "Mala": 3
+        },
+        "avg": 4.28
+      },
+      "entrega dcomputador, accesos y estación de trabajo": {
+        "dist": {
+          "Wow": 21,
+          "Buena": 17,
+          "Mala": 2
+        },
+        "avg": 4.42
+      },
+      "entrega de ficha socioeconómica como parte de su integr": {
+        "dist": {
+          "Buena": 21,
+          "Wow": 19,
+          "Mala": 6
+        },
+        "avg": 4.15
+      },
+      "inducción al puesto realizada para iniciar a trabajar": {
+        "dist": {
+          "Buena": 19,
+          "Wow": 16,
+          "Mala": 4
+        },
+        "avg": 4.21
+      },
+      "firma dcontrato para cierre de su contratación": {
+        "dist": {
+          "Wow": 20,
+          "Buena": 20,
+          "Mala": 3
+        },
+        "avg": 4.33
+      },
+      "evaluación dperiodo de prueba": {
+        "dist": {
+          "Wow": 20,
+          "Buena": 22,
+          "Mala": 2
+        },
+        "avg": 4.36
+      }
+    },
+    "senior": {
+      "cursos normativos recibidos en Mutualista Pichincha": {
+        "dist": {
+          "Wow": 89,
+          "Buena": 91,
+          "Mala": 17
+        },
+        "avg": 4.28
+      },
+      "capacitaciones brindadas por Mutualista Pichincha": {
+        "dist": {
+          "Wow": 56,
+          "Buena": 97,
+          "Mala": 23
+        },
+        "avg": 4.06
+      },
+      "forma en que se identifican necesidades de capacitación": {
+        "dist": {
+          "Wow": 57,
+          "Buena": 93,
+          "Mala": 31
+        },
+        "avg": 3.97
+      },
+      "relacion que mantiene con sus pares o subordinados": {
+        "dist": {
+          "Wow": 66,
+          "Buena": 112,
+          "Mala": 18
+        },
+        "avg": 4.15
+      },
+      "relacion y conexion con liderazgo": {
+        "dist": {
+          "Wow": 55,
+          "Buena": 103,
+          "Mala": 22
+        },
+        "avg": 4.06
+      },
+      "disponibilidad y actualizacion de herramientas tecnológ": {
+        "dist": {
+          "Wow": 63,
+          "Buena": 94,
+          "Mala": 26
+        },
+        "avg": 4.06
+      },
+      "instalaciones de Mutualista Pichincha para sus activida": {
+        "dist": {
+          "Wow": 63,
+          "Buena": 103,
+          "Mala": 21
+        },
+        "avg": 4.11
+      },
+      "facilidad de agendamiento y productividad de reuniones ": {
+        "dist": {
+          "Buena": 110,
+          "Wow": 61,
+          "Mala": 22
+        },
+        "avg": 4.09
+      },
+      "procesos diarios para interactuar con diferentes areas": {
+        "dist": {
+          "Wow": 69,
+          "Buena": 108,
+          "Mala": 15
+        },
+        "avg": 4.2
+      },
+      "retroalimentacion cotidiana": {
+        "dist": {
+          "Wow": 62,
+          "Buena": 99,
+          "Mala": 26
+        },
+        "avg": 4.05
+      },
+      "evaluación por objetivos (EVO) realizada en Mutualista ": {
+        "dist": {
+          "Buena": 71,
+          "Wow": 37,
+          "Mala": 5
+        },
+        "avg": 4.24
+      },
+      "evaluación de desempeño realizada en Mutualista Pichinc": {
+        "dist": {
+          "Wow": 69,
+          "Buena": 101,
+          "Mala": 21
+        },
+        "avg": 4.14
+      },
+      "retroalimentacion ddesempeño": {
+        "dist": {
+          "Wow": 62,
+          "Buena": 90,
+          "Mala": 29
+        },
+        "avg": 4.02
+      },
+      "proceso de promocion laboral que existe en Mutualista P": {
+        "dist": {
+          "Wow": 57,
+          "Buena": 98,
+          "Mala": 27
+        },
+        "avg": 4.02
+      },
+      "plan de desarrollo que existe en Mutualista Pichincha": {
+        "dist": {
+          "Wow": 59,
+          "Buena": 97,
+          "Mala": 30
+        },
+        "avg": 3.99
+      },
+      "gestión de pago de nomina": {
+        "dist": {
+          "Wow": 60,
+          "Buena": 94,
+          "Mala": 21
+        },
+        "avg": 4.1
+      },
+      "solicitud y aprobación de sus vacaciones": {
+        "dist": {
+          "Wow": 73,
+          "Buena": 102,
+          "Mala": 21
+        },
+        "avg": 4.16
+      },
+      "registro y justificación de ausentismos": {
+        "dist": {
+          "Wow": 70,
+          "Buena": 110,
+          "Mala": 11
+        },
+        "avg": 4.25
+      },
+      "asesoría de tributación y laboral recibida": {
+        "dist": {
+          "Wow": 72,
+          "Buena": 104,
+          "Mala": 16
+        },
+        "avg": 4.21
+      },
+      "compensaciones recibidas como remuneración variable": {
+        "dist": {
+          "Buena": 93,
+          "Mala": 28,
+          "Wow": 56
+        },
+        "avg": 4.0
+      },
+      "mi estructura salarial": {
+        "dist": {
+          "Wow": 58,
+          "Mala": 25,
+          "Buena": 91
+        },
+        "avg": 4.05
+      },
+      "sistema E-Business": {
+        "dist": {
+          "Buena": 102,
+          "Wow": 56,
+          "Mala": 24
+        },
+        "avg": 4.04
+      },
+      "entrega de uniformes": {
+        "dist": {
+          "Wow": 36,
+          "Buena": 50,
+          "Mala": 10
+        },
+        "avg": 4.17
+      },
+      "servicio de telefonía móvil corporativo / familiar": {
+        "dist": {
+          "Buena": 55,
+          "Wow": 30,
+          "Mala": 6
+        },
+        "avg": 4.2
+      },
+      "asesoría dequipo de SSO para uso dseguro médico": {
+        "dist": {
+          "Wow": 63,
+          "Buena": 109,
+          "Mala": 20
+        },
+        "avg": 4.12
+      },
+      "seguro médico proporcionado": {
+        "dist": {
+          "Wow": 69,
+          "Buena": 100,
+          "Mala": 23
+        },
+        "avg": 4.12
+      },
+      "eventos realizados por empresa": {
+        "dist": {
+          "Wow": 64,
+          "Buena": 98,
+          "Mala": 25
+        },
+        "avg": 4.07
+      },
+      "beneficios o convenios con otros establecimientos": {
+        "dist": {
+          "Wow": 64,
+          "Buena": 108,
+          "Mala": 16
+        },
+        "avg": 4.17
+      },
+      "planes o programas de bienestar": {
+        "dist": {
+          "Wow": 68,
+          "Buena": 111,
+          "Mala": 21
+        },
+        "avg": 4.13
+      },
+      "subsidios (maternidad, enfermedad, etc.)": {
+        "dist": {
+          "Wow": 68,
+          "Buena": 95,
+          "Mala": 20
+        },
+        "avg": 4.15
+      },
+      "dias de modalidad Home Office asignados": {
+        "dist": {
+          "Wow": 60,
+          "Buena": 108,
+          "Mala": 18
+        },
+        "avg": 4.13
+      },
+      "bonos (estudio, guarderia, navidad, trabajo social, etc": {
+        "dist": {
+          "Wow": 69,
+          "Buena": 100,
+          "Mala": 21
+        },
+        "avg": 4.14
+      },
+      "medicion de engagement (compromiso) realizada": {
+        "dist": {
+          "Wow": 64,
+          "Buena": 100,
+          "Mala": 27
+        },
+        "avg": 4.05
+      },
+      "comunicación periodica sobre temas relevantes": {
+        "dist": {
+          "Buena": 104,
+          "Wow": 53,
+          "Mala": 26
+        },
+        "avg": 4.01
+      },
+      "reconocimientos entregados": {
+        "dist": {
+          "Wow": 58,
+          "Buena": 107,
+          "Mala": 26
+        },
+        "avg": 4.03
+      },
+      "exámenes ocupacionales periódicos": {
+        "dist": {
+          "Wow": 68,
+          "Buena": 109,
+          "Mala": 20
+        },
+        "avg": 4.14
+      },
+      "actividades de prevención y gestión de riesgos": {
+        "dist": {
+          "Wow": 70,
+          "Buena": 107,
+          "Mala": 15
+        },
+        "avg": 4.21
+      },
+      "actividades de prevención ante eventos fortuitos (desas": {
+        "dist": {
+          "Wow": 57,
+          "Buena": 118,
+          "Mala": 18
+        },
+        "avg": 4.11
+      },
+      "apoyo brindado en un caso de trabajo social que impacta": {
+        "dist": {
+          "Wow": 61,
+          "Buena": 105,
+          "Mala": 23
+        },
+        "avg": 4.08
+      },
+      "atención medica brindada": {
+        "dist": {
+          "Wow": 72,
+          "Buena": 101,
+          "Mala": 18
+        },
+        "avg": 4.19
+      },
+      "cumplimiento de política conozca a su colaborador": {
+        "dist": {
+          "Wow": 80,
+          "Buena": 91,
+          "Mala": 20
+        },
+        "avg": 4.21
+      }
+    }
+  },
+  "comments": [
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La carga laboral es excesiva y afecta mi equilibrio entre trabajo y vida personal.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Talento Humano y Cultura",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Marketing y Experiencia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Falta acompanamiento para crecer; uno se estanca en el mismo puesto por anios.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Muy negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "Ex Colaboradores",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Auditoria Interna",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "No veo un plan de carrera claro; las promociones no son transparentes.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Muy negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 4
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Gerencia General",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "No veo un plan de carrera claro; las promociones no son transparentes.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Muy negativo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "0-6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Marketing y Experiencia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Legal y Cumplimiento",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "No siento que se reconozca el esfuerzo de manera justa y equitativa.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 4
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los reconocimientos parecen para siempre los mismos, no son equitativos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El ambiente laboral en mi area se ha vuelto tenso y poco colaborativo.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 2
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta liderazgo cercano; las decisiones no se comunican bien.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La relacion con el liderazgo es distante y poco clara en cuanto a objetivos.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay demasiados comunicados pero poca claridad en lo importante.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Legal y Cumplimiento",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El ambiente laboral en mi area se ha vuelto tenso y poco colaborativo.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "No veo un plan de carrera claro; las promociones no son transparentes.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Muy negativo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta acompanamiento para crecer; uno se estanca en el mismo puesto por anios.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Muy negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 4
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hace falta trabajar el clima del equipo, hay roces que no se gestionan.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay demasiados comunicados pero poca claridad en lo importante.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 0
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La remuneracion no esta acorde a las funciones y la responsabilidad que manejo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La comunicacion interna es deficiente, muchas veces nos enteramos tarde de las cosas.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Marketing y Experiencia",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La comunicacion interna es deficiente, muchas veces nos enteramos tarde de las cosas.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "No veo un plan de carrera claro; las promociones no son transparentes.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Muy negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta liderazgo cercano; las decisiones no se comunican bien.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "No siento que se reconozca el esfuerzo de manera justa y equitativa.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta acompanamiento para crecer; uno se estanca en el mismo puesto por anios.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Muy negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Marketing y Experiencia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Legal y Cumplimiento",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta liderazgo cercano; las decisiones no se comunican bien.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La comunicacion interna es deficiente, muchas veces nos enteramos tarde de las cosas.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay un companerismo genuino y la comunicacion con la gerencia es abierta y cercana.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Negativo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La relacion con el liderazgo es distante y poco clara en cuanto a objetivos.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Negativo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Marketing y Experiencia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Auditoria Interna",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Falta acompanamiento para crecer; uno se estanca en el mismo puesto por anios.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Muy negativo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El ambiente laboral en mi area se ha vuelto tenso y poco colaborativo.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Negativo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Tecnologia",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Gerencia General",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay demasiados comunicados pero poca claridad en lo importante.",
+      "tema": "Comunicación",
+      "subtema": "Comunicación",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Detractor",
+      "score": 2
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+      "tema": "Desarrollo",
+      "subtema": "Desarrollo",
+      "sentimiento": "Negativo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los reconocimientos parecen para siempre los mismos, no son equitativos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 5
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Valoro la flexibilidad y el trato humano; el liderazgo de mi area es accesible.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Credito y Cobranzas",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Tecnologia",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "En general estoy contento, el ambiente de trabajo es bueno y el equipo es solidario.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los reconocimientos parecen para siempre los mismos, no son equitativos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Negativo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Detractor",
+      "score": 6
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "El proposito de ayudar a las familias a tener vivienda me motiva muchisimo, me encanta lo que hacemos.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Finanzas y Administracion",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Marketing y Experiencia",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "La empresa realmente se preocupa por el bienestar de sus colaboradores y eso se nota cada dia.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Talento Humano y Cultura",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Excelente lugar para crecer profesionalmente, mis lideres me apoyan y me dan oportunidades.",
+      "tema": "Liderazgo",
+      "subtema": "Liderazgo",
+      "sentimiento": "Positivo",
+      "area": "Riesgos",
+      "genero": "Masculino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Los beneficios y el seguro medico son de los mejores que he tenido, me siento respaldado.",
+      "tema": "Compensación",
+      "subtema": "Compensación",
+      "sentimiento": "Neutral",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 8
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 10
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me siento orgulloso de trabajar en Mutualista Pichincha, el ambiente y la gente son excelentes.",
+      "tema": "Clima",
+      "subtema": "Clima",
+      "sentimiento": "Muy positivo",
+      "area": "Negocios e Inmobiliario",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Neutral",
+      "area": "Operaciones",
+      "genero": "Femenino",
+      "enps_cat": "Neutro",
+      "score": 7
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Me gusta la cultura de la organizacion, aunque hay temas puntuales que podrian agilizarse.",
+      "tema": "Otros",
+      "subtema": "General",
+      "sentimiento": "Positivo",
+      "area": "Finanzas y Administracion",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    },
+    {
+      "source": "+6 Meses",
+      "comment": "Buena institucion, estable y con valores; hay espacio para seguir mejorando algunos procesos.",
+      "tema": "Procesos",
+      "subtema": "Procesos",
+      "sentimiento": "Positivo",
+      "area": "Canales y Agencias",
+      "genero": "Femenino",
+      "enps_cat": "Promotor",
+      "score": 9
+    }
+  ],
+  "ex_exit": {
+    "themes": [
+      {
+        "tema": "Otros",
+        "count": 38
+      },
+      {
+        "tema": "Desarrollo",
+        "count": 10
+      },
+      {
+        "tema": "Compensación",
+        "count": 7
+      }
+    ],
+    "comments": [
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Canales y Agencias",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Tecnologia",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Marketing y Experiencia",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "No veo un plan de carrera claro; las promociones no son transparentes.",
+        "tema": "Desarrollo",
+        "sentimiento": "Muy negativo",
+        "area": "Riesgos",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Talento Humano y Cultura",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Talento Humano y Cultura",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Operaciones",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Legal y Cumplimiento",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Detractor"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Legal y Cumplimiento",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Talento Humano y Cultura",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Tecnologia",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Operaciones",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Siento que el salario se ha quedado atras frente al mercado y al esfuerzo que pongo.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Operaciones",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Canales y Agencias",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "La remuneracion no esta acorde a las funciones y la responsabilidad que manejo.",
+        "tema": "Otros",
+        "sentimiento": "Negativo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Riesgos",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Operaciones",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Mejor plan de crecimiento interno.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Talento Humano y Cultura",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Marketing y Experiencia",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Canales y Agencias",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Cumple lo basico, espero que mejoren la parte de reconocimiento y desarrollo.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Neutro"
+      },
+      {
+        "comment": "Equiparar salarios al mercado.",
+        "tema": "Compensación",
+        "sentimiento": "Neutral",
+        "area": "Negocios e Inmobiliario",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Hay cosas buenas y otras por mejorar; en general me mantengo neutral por ahora.",
+        "tema": "Otros",
+        "sentimiento": "Positivo",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Promotor"
+      },
+      {
+        "comment": "Estoy conforme, aunque la carga de trabajo en ciertas temporadas es bastante alta.",
+        "tema": "Otros",
+        "sentimiento": "Neutral",
+        "area": "Credito y Cobranzas",
+        "enps_cat": "Detractor"
+      },
+      {
+        "comment": "La empresa esta bien, pero siento que falta claridad en el plan de carrera.",
+        "tema": "Desarrollo",
+        "sentimiento": "Negativo",
+        "area": "Marketing y Experiencia",
+        "enps_cat": "Neutro"
+      }
+    ]
+  },
+  "themes_promotor": [
+    {
+      "tema": "Otros",
+      "count": 63
+    },
+    {
+      "tema": "Clima",
+      "count": 49
+    },
+    {
+      "tema": "Liderazgo",
+      "count": 48
+    },
+    {
+      "tema": "Procesos",
+      "count": 29
+    },
+    {
+      "tema": "Compensación",
+      "count": 27
+    },
+    {
+      "tema": "Comunicación",
+      "count": 25
+    }
+  ],
+  "themes_detractor": [
+    {
+      "tema": "Otros",
+      "count": 11
+    },
+    {
+      "tema": "Comunicación",
+      "count": 6
+    },
+    {
+      "tema": "Liderazgo",
+      "count": 5
+    },
+    {
+      "tema": "Desarrollo",
+      "count": 4
+    },
+    {
+      "tema": "Clima",
+      "count": 4
+    }
+  ]
+}

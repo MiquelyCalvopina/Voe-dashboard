@@ -138,6 +138,21 @@ export function factorAverages(records: Record[]): { label: string; score: numbe
   });
 }
 
+// Satisfacción = Top-2-Box: % de respuestas Likert con calificación 4 o 5
+// sobre el total de respuestas de los factores de una etapa.
+export function stageTopTwoBox(records: Record[], stageKey: string): number {
+  let positive = 0, total = 0;
+  for (const r of records) {
+    for (const [label, v] of Object.entries(r.factors)) {
+      if (FACTOR_CATALOG[label]?.stage === stageKey) {
+        total += 1;
+        if (v >= 4) positive += 1;
+      }
+    }
+  }
+  return total ? Math.round((positive / total) * 100) : 0;
+}
+
 export function comments(records: Record[]) {
   return records.filter(r => r.comment).map(r => ({
     source: r.source, comment: r.comment!, tema: r.tema, subtema: r.subtema,

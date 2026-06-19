@@ -4,12 +4,22 @@ import './index.css';
 
 export default function App() {
   return (
-    <div style={{ display: 'flex', width: '100%', height: '100%', backgroundColor: '#f9f9f9' }}>
-      {/* Sidebar fijo izquierdo */}
+    <div style={{ display: 'flex', width: '100%', height: '100%' }}>
       <Sidebar />
-
-      {/* Columna derecha: navbar + contenido */}
-      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, marginLeft: '60px', height: '100%', overflow: 'hidden' }}>
+      {/*
+        El sidebar es position:fixed (fuera del flujo normal).
+        paddingLeft compensa su ancho para que el contenido no quede debajo.
+      */}
+      <div
+        style={{
+          paddingLeft: '60px',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          minWidth: 0,
+        }}
+      >
         <Navbar />
         <main
           style={{
@@ -17,6 +27,7 @@ export default function App() {
             marginTop: '50px',
             backgroundColor: '#ffffff',
             overflow: 'auto',
+            minHeight: 0,
           }}
         />
       </div>

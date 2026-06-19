@@ -34,7 +34,8 @@ export default function Navbar() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0px',
+            minWidth: 0,
+            flex: 1,
           }}
         >
           {/* Hamburger button */}
@@ -97,8 +98,8 @@ export default function Navbar() {
               alignItems: 'center',
               paddingLeft: '9.8px',
               paddingRight: '12px',
-              gap: '0px',
-              minWidth: '226px',
+              overflow: 'hidden',
+              maxWidth: '100%',
             }}
           >
             {/* Home link */}

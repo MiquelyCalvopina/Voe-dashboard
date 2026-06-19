@@ -27,6 +27,8 @@ const C = {
   orange: '#fa8c16',
   ink: '#1a1a2e',
   muted: '#8c8c8c',
+  bar: '#94a3b8',      // barra neutral (conteos sin significado de color)
+  barLight: '#cbd5e1', // neutral más suave (categorías "Otros")
 };
 const SENTIMENT_COLORS: Record<string, string> = {
   'Muy positivo': '#389e0d', 'Positivo': '#52c41a', 'Neutral': '#d4b106', 'Negativo': '#ff7a45', 'Muy negativo': '#f5222d',
@@ -303,7 +305,7 @@ export default function Dashboard() {
 
           {/* eNPS por tipo */}
           <Card delay={0.16}>
-            <CardTitle title="eNPS por Tipo de Colaborador" sub="Click en una barra para filtrar el reporte" />
+            <CardTitle title="eNPS por Antigüedad" sub="Índice de recomendación (−100 a +100) de cada grupo · clic en una barra para filtrar" />
             <ResponsiveContainer width="100%" height={150}>
               <BarChart data={byType} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -326,7 +328,7 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 2: JOURNEY ═══ */}
       <section>
-        <SectionHeader n={2} title="El Viaje del Colaborador" subtitle="Cómo evoluciona la satisfacción a lo largo del ciclo de vida (promedio escala 1-5)" />
+        <SectionHeader n={2} title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%). Cuanto más alto, mejor la experiencia vivida." />
 
         <Card delay={0} pad={22}>
           {/* Journey curve */}
@@ -403,7 +405,7 @@ export default function Dashboard() {
         <SectionHeader n={3} title="Drivers de Satisfacción y Riesgo de Salida" subtitle="Qué impulsa a los promotores y qué genera detractores" />
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: GAP, marginBottom: GAP }}>
           <Card delay={0.05}>
-            <CardTitle title="Promotores vs Detractores · Temas mencionados" />
+            <CardTitle title="Promotores vs Detractores · Temas mencionados" sub="Sobre qué hablan quienes recomiendan (verde) vs. quienes no (rojo)" />
             <ResponsiveContainer width="100%" height={190}>
               <BarChart data={themesComparison} margin={{ top: 0, right: 8, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -418,7 +420,7 @@ export default function Dashboard() {
           </Card>
 
           <Card delay={0.1}>
-            <CardTitle title="Heatmap de Factores" sub="Promedio de acuerdo por factor (escala 1-5)" />
+            <CardTitle title="Satisfacción por Atributo" sub="Qué tan satisfechos están con cada atributo (1 a 5). Verde = alta, rojo = baja." />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5, maxHeight: 190, overflowY: 'auto' }}>
               {[...allFactors].sort((a, b) => b.score - a.score).slice(0, 12).map((f, i) => {
                 const t = Math.min(1, Math.max(0, (f.score - 3.4) / 1.6));
@@ -437,11 +439,11 @@ export default function Dashboard() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP }}>
           <Card delay={0.15}>
-            <CardTitle title="Top 5 Fortalezas" sub="Bien evaluados · mayor brecha Promotor−Detractor" />
+            <CardTitle title="Top 5 Fortalezas" sub="Atributos de satisfacción que más convierten a un colaborador en promotor" />
             <FactorList items={top5} color={C.promoter} bg="#f6ffed" />
           </Card>
           <Card delay={0.2}>
-            <CardTitle title="Top 5 Áreas a Mejorar" sub="Bajo promedio · mayor impacto en detractores" />
+            <CardTitle title="Top 5 Áreas a Mejorar" sub="Atributos de satisfacción que más empujan a un colaborador a volverse detractor" />
             <FactorList items={bottom5} color={C.detractor} bg="#fff1f0" dim />
           </Card>
         </div>
@@ -457,7 +459,7 @@ export default function Dashboard() {
 
             {/* Sentimiento general — barra divergente 100% */}
             <Card delay={0.05}>
-              <CardTitle title="Sentimiento General" sub={`${totalSentiments} comentarios · click para filtrar`} />
+              <CardTitle title="Sentimiento General" sub={`Tono de los ${totalSentiments} comentarios: positivo (verde) a negativo (rojo) · clic para filtrar`} />
               <SentimentBar
                 data={sentiments}
                 total={totalSentiments}
@@ -470,7 +472,7 @@ export default function Dashboard() {
 
             {/* Temas mencionados — lista rankeada que crece */}
             <Card delay={0.1}>
-              <CardTitle title="Temas Mencionados" sub="Ordenados por frecuencia · click para filtrar" />
+              <CardTitle title="Temas Mencionados" sub="Sobre qué hablan los comentarios, de más a menos frecuente · clic para filtrar" />
               <RankedBars
                 items={themes.map(t => ({ label: t.tema, value: t.count }))}
                 total={totalSentiments}
@@ -515,11 +517,11 @@ export default function Dashboard() {
           <SectionHeader n={5} title="Ex Colaboradores · Proceso de Salida" subtitle="Qué se llevaron al salir y qué pudo evitar su desvinculación" />
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP }}>
             <Card delay={0.05}>
-              <CardTitle title="Evaluación del Proceso de Salida" sub="Promedio de acuerdo (escala 1-5)" />
-              <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.pink} bg="#fff0f6" valueScale />
+              <CardTitle title="Satisfacción con el Proceso de Salida" sub="Qué tan satisfechos quedaron con cada paso de su salida (1 = muy insatisfecho, 5 = muy satisfecho)" />
+              <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.bar} bg="#f1f5f9" valueScale />
             </Card>
             <Card delay={0.1}>
-              <CardTitle title="¿Cómo evitar la desvinculación?" sub={`${exCmts.length} respuestas · click para filtrar`} />
+              <CardTitle title="¿Cómo evitar la desvinculación?" sub="Lo que pudo retenerlos, según sus respuestas, de más a menos frecuente · clic para filtrar" />
               {exThemes.length > 0 ? (
                 <RankedBars
                   items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
@@ -553,10 +555,10 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 6: BENCHMARK ═══ */}
       <section>
-        <SectionHeader n={6} title="Benchmark Interno" subtitle="Cómo se comparan los distintos segmentos" />
+        <SectionHeader n={6} title="Benchmark Interno" subtitle="Compara la experiencia entre grupos para detectar dónde enfocar los esfuerzos" />
         <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr', gap: GAP }}>
           <Card delay={0.05}>
-            <CardTitle title="eNPS por Segmento" sub="Comparación por tipo de colaborador" />
+            <CardTitle title="eNPS por Segmento" sub="Índice de recomendación (−100 a +100) por antigüedad. Más alto = más promotores." />
             <ResponsiveContainer width="100%" height={170}>
               <BarChart data={byType} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -566,19 +568,19 @@ export default function Dashboard() {
                 <ReferenceLine y={0} stroke="#d9d9d9" />
                 <Bar dataKey="enps" name="eNPS" radius={[6, 6, 0, 0]} maxBarSize={56} activeBar={false}
                   label={{ position: 'top', fontSize: 11, fontWeight: 700, fill: C.ink }}>
-                  {byType.map((_, i) => <Cell key={i} fill={PALETTE[i]} />)}
+                  {byType.map((d, i) => <Cell key={i} fill={enpsStatus(d.enps).color} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </Card>
 
           <Card delay={0.1}>
-            <CardTitle title="Por Género" sub="Distribución de participantes" />
+            <CardTitle title="Por Género" sub="Cómo se reparten los participantes de la encuesta por género" />
             <DemoBars items={genderDemo} total={genderDemo.reduce((a, b) => a + b.value, 0)} />
           </Card>
 
           <Card delay={0.15}>
-            <CardTitle title="Top Áreas" sub="Participantes por área" />
+            <CardTitle title="Top Áreas" sub="Áreas con mayor participación en la encuesta" />
             <DemoBars items={areaDemo.slice(0, 6)} total={areaDemo.reduce((a, b) => a + b.value, 0)} small />
           </Card>
         </div>
@@ -693,7 +695,7 @@ function RankedBars({ items, total, active, onToggle, demoteLast = [] }: {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 7, maxHeight: 260, overflowY: 'auto' }}>
       {sorted.map((it, i) => {
         const isOther = demoteLast.includes(it.label);
-        const color = isOther ? '#bfbfbf' : PALETTE[i % PALETTE.length];
+        const color = isOther ? C.barLight : C.bar;
         const isActive = active.includes(it.label);
         const pct = total ? Math.round((it.value / total) * 100) : 0;
         return (
@@ -726,9 +728,9 @@ function DemoBars({ items, total, small }: { items: { label: string; value: numb
           <div key={d.label}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
               <span style={{ fontSize: small ? 10 : 11, color: '#595959' }} title={d.label}>{trunc(d.label, 28)}</span>
-              <span style={{ fontSize: small ? 10 : 11, fontWeight: 700, color: PALETTE[i % PALETTE.length] }}>{pct}%</span>
+              <span style={{ fontSize: small ? 10 : 11, fontWeight: 700, color: '#262626' }}>{pct}%</span>
             </div>
-            <ProgressBar pct={pct} color={PALETTE[i % PALETTE.length]} delay={0.1 + i * 0.04} h={small ? 6 : 8} />
+            <ProgressBar pct={pct} color={C.bar} delay={0.1 + i * 0.04} h={small ? 6 : 8} />
           </div>
         );
       })}

@@ -13,3 +13,21 @@ html, body, #root {
   font-family: 'Open Sans', sans-serif;
   background-color: #f9f9f9;
 }
+
+/* Quitar el outline/borde negro al hacer click en las gráficas */
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+.recharts-wrapper *:focus,
+.recharts-surface *:focus,
+.recharts-bar-rectangle:focus,
+g:focus,
+path:focus,
+rect:focus {
+  outline: none !important;
+}
+
+/* Scrollbar sutil */
+main::-webkit-scrollbar { width: 8px; height: 8px; }
+main::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 1000px; }
+main::-webkit-scrollbar-thumb:hover { background: #c0c0c0; }
+main::-webkit-scrollbar-track { background: transparent; }

@@ -51,7 +51,6 @@ export default function Sidebar() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          paddingTop: '2px',
         }}
       >
         {navItems.map((item, i) => (
@@ -59,7 +58,7 @@ export default function Sidebar() {
             key={i}
             title={item.label}
             style={{
-              width: '55px',
+              width: '60px',
               height: '40px',
               display: 'flex',
               alignItems: 'center',

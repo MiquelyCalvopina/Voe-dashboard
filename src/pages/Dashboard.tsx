@@ -468,7 +468,7 @@ export default function Dashboard() {
                   <RankedBars
                     items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
                     total={exCmts.length}
-                    demoteLast={['Otros']}
+                    demoteLast={['Ninguna', 'Otros']}
                   />
                 </Card>
               )}

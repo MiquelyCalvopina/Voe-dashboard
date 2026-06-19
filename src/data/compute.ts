@@ -23,6 +23,8 @@ export interface Record {
 }
 
 export const ALL_RECORDS = voeData.records as unknown as Record[];
+export const PREVIOUS_RECORDS = (voeData.previousRecords ?? []) as unknown as Record[];
+export const PERIOD = (voeData.meta as any).period as { current: string; previous: string; previousSimulated: boolean };
 export const FACTOR_CATALOG = voeData.factorCatalog as { [label: string]: { stage: string; source: string } };
 export const FILTER_OPTIONS = voeData.filterOptions as {
   source: string[]; area: string[]; ciudad: string[]; nivel: string[];

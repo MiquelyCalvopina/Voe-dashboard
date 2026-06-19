@@ -14,6 +14,7 @@ export default function Navbar() {
         zIndex: 99,
         display: 'flex',
         alignItems: 'flex-end',
+        paddingTop: '2px',
         paddingLeft: '3.67px',
         paddingRight: '3.67px',
       }}

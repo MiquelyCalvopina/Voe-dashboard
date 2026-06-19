@@ -111,10 +111,12 @@ export default function Dashboard() {
       return { type: src, label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
     }).filter(d => d.total > 0)
   , [records]);
-  const themes = useMemo(() => themeCounts(records), [records]);
-  const sentiments = useMemo(() => sentimentCounts(records), [records]);
+  // Voz del Colaborador: SOLO encuestas de experiencia (0-6m + +6m), nunca ex colaboradores
+  const expRecords = useMemo(() => records.filter(r => r.source !== 'Ex Colaboradores'), [records]);
+  const themes = useMemo(() => themeCounts(expRecords), [expRecords]);
+  const sentiments = useMemo(() => sentimentCounts(expRecords), [expRecords]);
   const allFactors = useMemo(() => factorAverages(records), [records]);
-  const cmts = useMemo(() => comments(records), [records]);
+  const cmts = useMemo(() => comments(expRecords), [expRecords]);
   const exThemes = useMemo(() => exitThemes(records), [records]);
   const exCmts = useMemo(() => exitComments(records), [records]);
   const genderDemo = useMemo(() => demographic(records, 'genero'), [records]);
@@ -447,79 +449,64 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 4: VOZ ═══ */}
       <section>
-        <SectionHeader n={4} title="Voz del Colaborador" subtitle="Qué dicen en sus comentarios abiertos" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: GAP, marginBottom: GAP }}>
-          <Card delay={0.05}>
-            <CardTitle title="Temas Frecuentes" sub={`${cmts.length} comentarios · click para filtrar`} />
-            <ResponsiveContainer width="100%" height={180}>
-              <BarChart data={themes} layout="vertical" margin={{ top: 0, right: 28, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
-                <XAxis type="number" tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
-                <YAxis type="category" dataKey="tema" width={84} tick={{ fontSize: 11, fill: '#595959' }} axisLine={false} tickLine={false} />
-                <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                <Bar dataKey="count" name="Menciones" radius={[0, 6, 6, 0]} maxBarSize={18} cursor="pointer" activeBar={false}
-                  onClick={(d: any) => toggleFilter('tema', d.tema)}
-                  label={{ position: 'right', fontSize: 10, fill: '#8c8c8c' }}>
-                  {themes.map((t, i) => (
-                    <Cell key={i} fill={PALETTE[i % PALETTE.length]}
-                      opacity={filters.tema.length && !filters.tema.includes(t.tema) ? 0.4 : 1} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
+        <SectionHeader n={4} title="Voz del Colaborador" subtitle="Qué dicen los colaboradores activos en sus comentarios (encuestas 0-6 y +6 meses)" />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: GAP, alignItems: 'start' }}>
 
-          <Card delay={0.1}>
-            <CardTitle title="Distribución de Sentimiento" sub="Click para filtrar el reporte" />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {sentimentOrder.map(sent => {
-                const found = sentiments.find(s => s.sentimiento === sent);
-                if (!found) return null;
-                const pct = totalSentiments ? Math.round((found.count / totalSentiments) * 100) : 0;
-                const color = SENTIMENT_COLORS[sent];
-                const active = filters.sentimiento.includes(sent);
-                return (
-                  <div key={sent} onClick={() => toggleFilter('sentimiento', sent)}
-                    style={{ cursor: 'pointer', opacity: filters.sentimiento.length && !active ? 0.45 : 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <span style={{ width: 7, height: 7, borderRadius: '50%', background: color }} />
-                        <span style={{ fontSize: 11, color: '#595959', fontWeight: active ? 700 : 400 }}>{sent}</span>
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color }}>{pct}%</span>
+          {/* ── Primera columna: gráficas de categorización ── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
+
+            {/* Sentimiento general — barra divergente 100% */}
+            <Card delay={0.05}>
+              <CardTitle title="Sentimiento General" sub={`${totalSentiments} comentarios · click para filtrar`} />
+              <SentimentBar
+                data={sentiments}
+                total={totalSentiments}
+                order={sentimentOrder}
+                colors={SENTIMENT_COLORS}
+                active={filters.sentimiento}
+                onToggle={(s) => toggleFilter('sentimiento', s)}
+              />
+            </Card>
+
+            {/* Temas mencionados — lista rankeada que crece */}
+            <Card delay={0.1}>
+              <CardTitle title="Temas Mencionados" sub="Ordenados por frecuencia · click para filtrar" />
+              <RankedBars
+                items={themes.map(t => ({ label: t.tema, value: t.count }))}
+                total={totalSentiments}
+                active={filters.tema}
+                onToggle={(t) => toggleFilter('tema', t)}
+                demoteLast={['Otros']}
+              />
+            </Card>
+          </div>
+
+          {/* ── Segunda columna: comentarios verbatim ── */}
+          <Card delay={0.15}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, gap: 12 }}>
+              <CardTitle title="Comentarios Verbatim" sub={`${filteredComments.length} comentarios`} />
+              <Search placeholder="Buscar en comentarios..." onChange={e => setCommentSearch(e.target.value)} size="small" allowClear style={{ maxWidth: 240 }} />
+            </div>
+            <div style={{ maxHeight: 560, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <AnimatePresence>
+                {filteredComments.slice(0, 60).map((c, i) => (
+                  <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: i * 0.012 }}
+                    style={{ padding: '10px 13px', background: '#fafafa', borderRadius: 9, border: '1px solid #f0f0f0', borderLeft: `3px solid ${SENTIMENT_COLORS[c.sentimiento || ''] || '#d9d9d9'}` }}>
+                    <div style={{ display: 'flex', gap: 5, marginBottom: 5, flexWrap: 'wrap' }}>
+                      {c.cat && <Tag color={ENPS_COLORS[c.cat] || 'default'} style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.cat}</Tag>}
+                      <Tag color="blue" style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.source}</Tag>
+                      {c.tema && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.tema}</Tag>}
+                      {c.sentimiento && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0, background: `${SENTIMENT_COLORS[c.sentimiento]}22`, borderColor: SENTIMENT_COLORS[c.sentimiento], color: SENTIMENT_COLORS[c.sentimiento] }}>{c.sentimiento}</Tag>}
                     </div>
-                    <ProgressBar pct={pct} color={color} delay={0.15} />
-                  </div>
-                );
-              })}
+                    <p style={{ fontSize: 11.5, color: '#595959', margin: 0, lineHeight: 1.5 }}>{c.comment}</p>
+                    {c.area && <div style={{ fontSize: 9.5, color: '#bfbfbf', marginTop: 4 }}>📍 {c.area}</div>}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+              {filteredComments.length === 0 && <div style={{ textAlign: 'center', padding: '28px 0', color: '#bfbfbf', fontSize: 12 }}>Sin resultados</div>}
             </div>
           </Card>
         </div>
-
-        <Card delay={0.15}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, gap: 12 }}>
-            <CardTitle title="Comentarios Verbatim" sub={`${filteredComments.length} comentarios`} />
-            <Search placeholder="Buscar en comentarios..." onChange={e => setCommentSearch(e.target.value)} size="small" allowClear style={{ maxWidth: 280 }} />
-          </div>
-          <div style={{ maxHeight: 320, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <AnimatePresence>
-              {filteredComments.slice(0, 40).map((c, i) => (
-                <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: i * 0.015 }}
-                  style={{ padding: '10px 13px', background: '#fafafa', borderRadius: 9, border: '1px solid #f0f0f0', borderLeft: `3px solid ${SENTIMENT_COLORS[c.sentimiento || ''] || '#d9d9d9'}` }}>
-                  <div style={{ display: 'flex', gap: 5, marginBottom: 5, flexWrap: 'wrap' }}>
-                    {c.cat && <Tag color={ENPS_COLORS[c.cat] || 'default'} style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.cat}</Tag>}
-                    <Tag color="blue" style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.source}</Tag>
-                    {c.tema && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.tema}</Tag>}
-                    {c.sentimiento && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0, background: `${SENTIMENT_COLORS[c.sentimiento]}22`, borderColor: SENTIMENT_COLORS[c.sentimiento], color: SENTIMENT_COLORS[c.sentimiento] }}>{c.sentimiento}</Tag>}
-                  </div>
-                  <p style={{ fontSize: 11.5, color: '#595959', margin: 0, lineHeight: 1.5 }}>{c.comment}</p>
-                  {c.area && <div style={{ fontSize: 9.5, color: '#bfbfbf', marginTop: 4 }}>📍 {c.area}</div>}
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            {filteredComments.length === 0 && <div style={{ textAlign: 'center', padding: '28px 0', color: '#bfbfbf', fontSize: 12 }}>Sin resultados</div>}
-          </div>
-        </Card>
       </section>
 
       {/* ═══ SECCIÓN 5: EX COLABORADORES ═══ */}
@@ -628,6 +615,113 @@ function FactorList({ items, color, bg, dim, valueScale }: { items: { label: str
           <span style={{ fontSize: 10.5, fontWeight: 700, color, flexShrink: 0 }}>{f.score.toFixed(2)}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+// ── Sentimiento: barra divergente 100% apilada (estándar CX) ────────────────────
+function SentimentBar({ data, total, order, colors, active, onToggle }: {
+  data: { sentimiento: string; count: number }[];
+  total: number;
+  order: string[];
+  colors: Record<string, string>;
+  active: string[];
+  onToggle: (s: string) => void;
+}) {
+  const get = (s: string) => data.find(d => d.sentimiento === s)?.count || 0;
+  // De más negativo a más positivo para la barra (izq → der)
+  const barOrder = [...order].reverse();
+  const posPct = total ? Math.round(((get('Muy positivo') + get('Positivo')) / total) * 100) : 0;
+  const negPct = total ? Math.round(((get('Muy negativo') + get('Negativo')) / total) * 100) : 0;
+
+  return (
+    <div>
+      {/* Titular: balance de sentimiento */}
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
+        <span style={{ fontSize: 32, fontWeight: 800, color: C.promoter, lineHeight: 1 }}>{posPct}%</span>
+        <span style={{ fontSize: 11, color: C.muted }}>positivo</span>
+        <span style={{ marginLeft: 'auto', fontSize: 11, color: C.muted }}>
+          <span style={{ color: C.detractor, fontWeight: 700 }}>{negPct}%</span> negativo
+        </span>
+      </div>
+
+      {/* Barra 100% apilada */}
+      <div style={{ display: 'flex', width: '100%', height: 16, borderRadius: 1000, overflow: 'hidden', background: '#f5f5f5' }}>
+        {barOrder.map(s => {
+          const count = get(s);
+          if (!count) return null;
+          const pct = (count / total) * 100;
+          const dim = active.length && !active.includes(s);
+          return (
+            <motion.div key={s} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.7, ease: 'easeOut' }}
+              onClick={() => onToggle(s)} title={`${s}: ${Math.round(pct)}% (${count})`}
+              style={{ height: '100%', background: colors[s], cursor: 'pointer', opacity: dim ? 0.35 : 1 }} />
+          );
+        })}
+      </div>
+
+      {/* Leyenda alineada en grilla (crece en filas) */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px', marginTop: 14 }}>
+        {order.map(s => {
+          const count = get(s);
+          const pct = total ? Math.round((count / total) * 100) : 0;
+          const isActive = active.includes(s);
+          return (
+            <div key={s} onClick={() => onToggle(s)}
+              style={{ display: 'flex', alignItems: 'center', gap: 7, cursor: 'pointer', opacity: active.length && !isActive ? 0.4 : 1 }}>
+              <span style={{ width: 9, height: 9, borderRadius: 3, background: colors[s], flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: '#595959', fontWeight: isActive ? 700 : 400, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s}</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: colors[s], flexShrink: 0 }}>{pct}%</span>
+              <span style={{ fontSize: 10, color: '#bfbfbf', flexShrink: 0, width: 30, textAlign: 'right' }}>({count})</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Categorización rankeada: columnas cuadradas, crece en N categorías ──────────
+function RankedBars({ items, total, active, onToggle, demoteLast = [] }: {
+  items: { label: string; value: number }[];
+  total: number;
+  active: string[];
+  onToggle: (label: string) => void;
+  demoteLast?: string[];
+}) {
+  // Orden por frecuencia, pero las categorías "cajón de sastre" siempre al final
+  const sorted = [...items].sort((a, b) => {
+    const da = demoteLast.includes(a.label) ? 1 : 0;
+    const db = demoteLast.includes(b.label) ? 1 : 0;
+    if (da !== db) return da - db;
+    return b.value - a.value;
+  });
+  const max = Math.max(1, ...items.map(i => i.value));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 7, maxHeight: 260, overflowY: 'auto' }}>
+      {sorted.map((it, i) => {
+        const isOther = demoteLast.includes(it.label);
+        const color = isOther ? '#bfbfbf' : PALETTE[i % PALETTE.length];
+        const isActive = active.includes(it.label);
+        const pct = total ? Math.round((it.value / total) * 100) : 0;
+        return (
+          <div key={it.label} onClick={() => onToggle(it.label)}
+            style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', height: 26,
+              opacity: active.length && !isActive ? 0.4 : 1 }}>
+            {/* Etiqueta: columna fija */}
+            <span style={{ width: 96, fontSize: 11, fontWeight: isActive ? 700 : 400, color: '#595959', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flexShrink: 0 }} title={it.label}>{it.label}</span>
+            {/* Barra: flexible */}
+            <div style={{ flex: 1, minWidth: 0, height: 10, background: '#f5f5f5', borderRadius: 1000, overflow: 'hidden' }}>
+              <motion.div initial={{ width: 0 }} animate={{ width: `${(it.value / max) * 100}%` }} transition={{ duration: 0.6, delay: 0.05 + i * 0.04, ease: 'easeOut' }}
+                style={{ height: '100%', background: color, borderRadius: 1000 }} />
+            </div>
+            {/* Conteo + %: columnas fijas alineadas a la derecha */}
+            <span style={{ width: 28, fontSize: 11, fontWeight: 700, color: '#262626', textAlign: 'right', flexShrink: 0 }}>{it.value}</span>
+            <span style={{ width: 36, fontSize: 10.5, color: C.muted, textAlign: 'right', flexShrink: 0 }}>{pct}%</span>
+          </div>
+        );
+      })}
     </div>
   );
 }

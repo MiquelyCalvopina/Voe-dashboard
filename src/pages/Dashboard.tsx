@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, PieChart, Pie,
-  AreaChart, Area, ComposedChart, Line,
+  LineChart, ComposedChart, Line,
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Button, Pagination } from 'antd';
@@ -224,10 +224,10 @@ export default function Dashboard() {
           <div style={{ fontSize: 11, color: C.muted, marginBottom: 10 }}>Respuestas analizadas</div>
           <div style={{ fontSize: 40, fontWeight: 800, color: C.ink, lineHeight: 1.05, marginBottom: 12 }}>{stats.total}</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {byType.map((d, i) => (
+            {byType.map((d) => (
               <div key={d.type} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11.5 }}>
                 <span style={{ color: C.muted }}>{d.label}</span>
-                <span style={{ fontWeight: 700, color: PALETTE[i] }}>{d.total}</span>
+                <span style={{ fontWeight: 700, color: C.ink }}>{d.total}</span>
               </div>
             ))}
           </div>
@@ -246,8 +246,8 @@ export default function Dashboard() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ fontSize: 48, fontWeight: 800, color: status.color, lineHeight: 1 }}>
-                {stats.enps}<span style={{ fontSize: 20, color: '#d9d9d9', fontWeight: 600 }}>/100</span>
+              <div style={{ fontSize: 48, fontWeight: 800, color: C.ink, lineHeight: 1 }}>
+                {stats.enps}<span style={{ fontSize: 20, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 14 }}>
                 {donutData.map(d => (
@@ -266,7 +266,7 @@ export default function Dashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie data={donutData} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                    innerRadius={50} outerRadius={76} paddingAngle={3} cornerRadius={5}
+                    innerRadius={62} outerRadius={74} paddingAngle={2} cornerRadius={3}
                     startAngle={90} endAngle={-270}>
                     {donutData.map((d, i) => <Cell key={i} fill={d.color} stroke="none" />)}
                   </Pie>
@@ -281,11 +281,11 @@ export default function Dashboard() {
         <Card delay={0.12}>
           <CardTitle title="eNPS por Antigüedad" sub="Click en una barra para filtrar el reporte" />
           <ResponsiveContainer width="100%" height={175}>
-            <ComposedChart data={byType} margin={{ top: 14, right: 44, left: -22, bottom: 0 }}>
+            <ComposedChart data={byType} margin={{ top: 20, right: 40, left: -24, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />
               <YAxis yAxisId="left" domain={[0, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
-              <YAxis yAxisId="right" orientation="right" domain={[-100, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
+              <YAxis yAxisId="right" orientation="right" domain={[-100, 100]} tick={false} axisLine={false} tickLine={false} width={0} />
               <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
               <Bar yAxisId="left" dataKey="pct_promoters" name="Promotores %" stackId="dist" fill={C.promoter} maxBarSize={56} cursor="pointer"
                 onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
@@ -317,61 +317,49 @@ export default function Dashboard() {
       <section>
         <SectionHeader title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%)" />
         <Card delay={0} pad={20}>
-          <div style={{ height: 140, marginBottom: 4 }}>
+          <div style={{ height: 110 }}>
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={journey} margin={{ top: 20, right: 30, left: 30, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="journeyGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor={C.primary} stopOpacity={0.2} />
-                    <stop offset="100%" stopColor={C.primary} stopOpacity={0.01} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" vertical={false} />
-                <XAxis dataKey="label" tick={false} axisLine={false} tickLine={false} />
+              <LineChart data={journey} margin={{ top: 24, right: 16, left: 16, bottom: 0 }}>
+                <XAxis dataKey="label" tick={false} axisLine={false} tickLine={false} height={0} />
                 <YAxis domain={[60, 90]} hide />
                 <Tooltip content={({ active, payload }: any) => {
                   if (!active || !payload?.length) return null;
                   const d = payload[0].payload;
                   return (
                     <div style={{ background: '#fff', border: '1px solid #e8e8e8', borderRadius: 8, padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontSize: 11 }}>
-                      <p style={{ fontWeight: 700, color: C.ink }}>{d.label}</p>
-                      <p style={{ color: C.primary }}>Satisfacción: {d.satisfaction}%</p>
-                      <p style={{ color: C.muted }}>eNPS: {d.enps} · {d.n} resp.</p>
+                      <p style={{ fontWeight: 700, color: C.ink, margin: 0 }}>{d.label}</p>
+                      <p style={{ color: C.muted, margin: '2px 0 0' }}>Satisfacción: {d.satisfaction}% · eNPS {d.enps}</p>
                     </div>
                   );
                 }} />
-                <Area type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2.5} fill="url(#journeyGrad)"
-                  dot={{ r: 5, fill: '#fff', stroke: C.primary, strokeWidth: 2.5 }}
-                  activeDot={{ r: 7, fill: C.primary }}
-                  label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => `${v}%` }} />
-              </AreaChart>
+                <Line type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2}
+                  dot={{ r: 4, fill: '#fff', stroke: C.primary, strokeWidth: 2 }}
+                  activeDot={{ r: 6, fill: C.primary }}
+                  label={{ position: 'top', fontSize: 11, fontWeight: 700, fill: C.primary, formatter: (v: any) => `${v}%` }} />
+              </LineChart>
             </ResponsiveContainer>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${journey.length}, 1fr)`, gap: 12, marginTop: 10 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${journey.length}, 1fr)`, borderTop: '1px solid #f0f0f0', marginTop: 4 }}>
             {journey.map((j, i) => (
               <motion.div key={j.key}
-                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 + i * 0.07 }}
-                style={{ position: 'relative', padding: '12px 12px 14px', borderRadius: 10, background: '#fafafa', border: '1px solid #f0f0f0' }}>
-                {i < journey.length - 1 && (
-                  <div style={{ position: 'absolute', right: -10, top: '50%', transform: 'translateY(-50%)', zIndex: 2, color: '#d9d9d9', fontSize: 16 }}>›</div>
-                )}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8 }}>
-                  <div style={{ width: 26, height: 26, borderRadius: 8, background: `${j.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{j.icon}</div>
+                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.06 + i * 0.06 }}
+                style={{ padding: '14px 12px', borderRight: i < journey.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                  <span style={{ fontSize: 14 }}>{j.icon}</span>
                   <div style={{ fontSize: 10.5, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
                 </div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: j.color, lineHeight: 1, marginBottom: 2 }}>{j.satisfaction}%</div>
-                <div style={{ fontSize: 10, color: C.muted, marginBottom: 10 }}>eNPS {j.enps} · {j.n} resp.</div>
+                <div style={{ fontSize: 28, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 10 }}>{j.satisfaction}%</div>
                 {j.best && (
-                  <div style={{ marginBottom: 6 }}>
-                    <div style={{ fontSize: 9, color: C.promoter, fontWeight: 700, marginBottom: 1 }}>▲ Fortaleza</div>
-                    <div style={{ fontSize: 9.5, color: '#595959', lineHeight: 1.3 }} title={j.best.label}>{trunc(j.best.label, 38)}</div>
+                  <div style={{ marginBottom: 8 }}>
+                    <div style={{ fontSize: 9.5, color: C.promoter, fontWeight: 700, marginBottom: 2 }}>▲ Fortaleza</div>
+                    <div style={{ fontSize: 9.5, color: '#595959', lineHeight: 1.3 }} title={j.best.label}>{trunc(j.best.label, 40)}</div>
                   </div>
                 )}
                 {j.worst && j.worst.label !== j.best?.label && (
                   <div>
-                    <div style={{ fontSize: 9, color: C.detractor, fontWeight: 700, marginBottom: 1 }}>▼ A mejorar</div>
-                    <div style={{ fontSize: 9.5, color: '#595959', lineHeight: 1.3 }} title={j.worst.label}>{trunc(j.worst.label, 38)}</div>
+                    <div style={{ fontSize: 9.5, color: C.detractor, fontWeight: 700, marginBottom: 2 }}>▼ A mejorar</div>
+                    <div style={{ fontSize: 9.5, color: '#595959', lineHeight: 1.3 }} title={j.worst.label}>{trunc(j.worst.label, 40)}</div>
                   </div>
                 )}
               </motion.div>

@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, PieChart, Pie,
-  LineChart, ComposedChart, Line,
+  ComposedChart, Line, AreaChart, Area,
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Button, Pagination } from 'antd';
@@ -356,11 +356,17 @@ export default function Dashboard() {
       <section>
         <SectionHeader title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%)" />
         <Card delay={0} pad={20}>
-          <div style={{ height: 110 }}>
+          <div style={{ height: 96 }}>
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={journey} margin={{ top: 24, right: 16, left: 16, bottom: 0 }}>
+              <AreaChart data={journey} margin={{ top: 26, right: 24, left: 24, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="journeyFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={C.primary} stopOpacity={0.16} />
+                    <stop offset="100%" stopColor={C.primary} stopOpacity={0} />
+                  </linearGradient>
+                </defs>
                 <XAxis dataKey="label" tick={false} axisLine={false} tickLine={false} height={0} />
-                <YAxis domain={[60, 90]} hide />
+                <YAxis domain={[55, 92]} hide />
                 <Tooltip content={({ active, payload }: any) => {
                   if (!active || !payload?.length) return null;
                   const d = payload[0].payload;
@@ -371,11 +377,12 @@ export default function Dashboard() {
                     </div>
                   );
                 }} />
-                <Line type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2}
-                  dot={{ r: 4, fill: '#fff', stroke: C.primary, strokeWidth: 2 }}
+                <Area type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2.5}
+                  fill="url(#journeyFill)"
+                  dot={{ r: 4.5, fill: '#fff', stroke: C.primary, strokeWidth: 2 }}
                   activeDot={{ r: 6, fill: C.primary }}
-                  label={{ position: 'top', fontSize: 11, fontWeight: 700, fill: C.primary, formatter: (v: any) => `${v}%` }} />
-              </LineChart>
+                  label={{ position: 'top', fontSize: 11.5, fontWeight: 700, fill: C.ink, formatter: (v: any) => `${v}%` }} />
+              </AreaChart>
             </ResponsiveContainer>
           </div>
 
@@ -383,12 +390,16 @@ export default function Dashboard() {
             {journey.map((j, i) => (
               <motion.div key={j.key}
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.06 + i * 0.06 }}
-                style={{ padding: '14px 12px', borderRight: i < journey.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-                  <span style={{ fontSize: 14 }}>{j.icon}</span>
-                  <div style={{ fontSize: 10.5, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
+                style={{ padding: '16px 14px', position: 'relative' }}>
+                {/* Chevron separador entre columnas */}
+                {i < journey.length - 1 && (
+                  <span style={{ position: 'absolute', top: 64, right: -7, color: '#d9d9d9', fontSize: 16, lineHeight: 1, zIndex: 1 }}>›</span>
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, marginBottom: 8 }}>
+                  <span style={{ width: 24, height: 24, borderRadius: 7, background: j.color + '1f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{j.icon}</span>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
                 </div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 10 }}>{j.satisfaction}%</div>
+                <div style={{ fontSize: 30, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12, textAlign: 'center' }}>{j.satisfaction}%</div>
                 {j.best && (
                   <div style={{ marginBottom: 8 }}>
                     <div style={{ fontSize: 9.5, color: C.promoter, fontWeight: 700, marginBottom: 2 }}>▲ Fortaleza</div>

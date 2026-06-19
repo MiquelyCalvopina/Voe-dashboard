@@ -126,7 +126,7 @@ export default function Dashboard() {
   const [compare, setCompare] = useState(true);
 
   const records = useMemo(() => applyFilters(ALL_RECORDS, filters), [filters]);
-  // Periodo anterior (Mayo · simulado), recalculado con los mismos filtros
+  // Periodo anterior, recalculado con los mismos filtros
   const prevRecords = useMemo(() => applyFilters(PREVIOUS_RECORDS, filters), [filters]);
   const prevStats = useMemo(() => enpsStats(prevRecords), [prevRecords]);
   const prevEnpsBySource = useMemo(() => {
@@ -244,7 +244,7 @@ export default function Dashboard() {
                 borderRadius: '50%', background: '#fff', transition: 'left 0.2s',
               }} />
             </span>
-            Comparar con {PERIOD.previous}{PERIOD.previousSimulated ? ' (simulado)' : ''}
+            Comparar con {PERIOD.previous}
           </button>
         </div>
 

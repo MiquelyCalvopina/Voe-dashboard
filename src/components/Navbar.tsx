@@ -16,7 +16,7 @@ export default function Navbar() {
         alignItems: 'flex-end',
         paddingTop: '2px',
         paddingLeft: '3.67px',
-        paddingRight: '3.67px',
+        paddingRight: 0,
       }}
     >
       {/* Inner container with bottom border */}

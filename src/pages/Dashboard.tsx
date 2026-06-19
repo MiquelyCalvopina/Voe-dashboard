@@ -7,7 +7,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Button, Pagination } from 'antd';
 import {
-  ALL_RECORDS, FILTER_OPTIONS, EMPTY_FILTERS, applyFilters, enpsStats, enpsStatus,
+  ALL_RECORDS, PREVIOUS_RECORDS, PERIOD, FILTER_OPTIONS, EMPTY_FILTERS, applyFilters, enpsStats, enpsStatus,
   factorAverages, comments, exitThemes, exitComments, stageTopTwoBox,
   type Filters,
 } from '../data/compute';
@@ -40,6 +40,20 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }
       <h2 style={{ fontSize: 15, fontWeight: 700, color: C.ink, margin: 0 }}>{title}</h2>
       {subtitle && <p style={{ fontSize: 12, color: C.muted, margin: '3px 0 0' }}>{subtitle}</p>}
     </div>
+  );
+}
+
+// Indicador de variación vs. periodo anterior
+function Delta({ diff, decimals = 0, size = 11, suffix = '' }: { diff: number; decimals?: number; size?: number; suffix?: string }) {
+  const rounded = Number(diff.toFixed(decimals));
+  const up = rounded > 0, down = rounded < 0;
+  const color = up ? '#389e0d' : down ? '#cf1322' : '#bfbfbf';
+  const arrow = up ? '▲' : down ? '▼' : '=';
+  const txt = rounded === 0 ? '0' : `${up ? '+' : ''}${rounded.toFixed(decimals)}`;
+  return (
+    <span style={{ color, fontSize: size, fontWeight: 700, whiteSpace: 'nowrap' }}>
+      {arrow} {txt}{suffix}
+    </span>
   );
 }
 
@@ -109,16 +123,30 @@ export default function Dashboard() {
   const [commentPage, setCommentPage] = useState(1);
   const [exitCommentPage, setExitCommentPage] = useState(1);
   const [filtersOpen, setFiltersOpen] = useState(true);
+  const [compare, setCompare] = useState(true);
 
   const records = useMemo(() => applyFilters(ALL_RECORDS, filters), [filters]);
+  // Periodo anterior (Mayo · simulado), recalculado con los mismos filtros
+  const prevRecords = useMemo(() => applyFilters(PREVIOUS_RECORDS, filters), [filters]);
+  const prevStats = useMemo(() => enpsStats(prevRecords), [prevRecords]);
+  const prevEnpsBySource = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const src of FILTER_OPTIONS.source) m[src] = enpsStats(prevRecords.filter(r => r.source === src)).enps;
+    return m;
+  }, [prevRecords]);
+  const prevFactorScore = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const f of factorAverages(prevRecords)) m[f.label] = f.score;
+    return m;
+  }, [prevRecords]);
 
   const stats = useMemo(() => enpsStats(records), [records]);
   const byType = useMemo(() =>
     [...FILTER_OPTIONS.source].sort((a, b) => sourceRank(a) - sourceRank(b)).map(src => {
       const s = enpsStats(records.filter(r => r.source === src));
-      return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
+      return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, prevEnps: prevEnpsBySource[src], ...s };
     }).filter(d => d.total > 0)
-  , [records]);
+  , [records, prevEnpsBySource]);
 
   const expRecords = useMemo(() => records.filter(r => r.source !== 'Ex Colaboradores'), [records]);
   const allFactors = useMemo(() => factorAverages(records), [records]);
@@ -142,9 +170,10 @@ export default function Dashboard() {
     const worst = [...stageFactors].sort((a, b) => a.score - b.score)[0];
     return {
       ...stage, avg: Math.round(avg * 100) / 100, satisfaction: stageTopTwoBox(records, stage.key),
+      prevSatisfaction: stageTopTwoBox(prevRecords, stage.key),
       enps: s.enps, n: s.total, best, worst,
     };
-  }).filter(j => j.n > 0), [records, allFactors]);
+  }).filter(j => j.n > 0), [records, prevRecords, allFactors]);
 
   const exStats = useMemo(() => enpsStats(records.filter(r => r.source === 'Ex Colaboradores')), [records]);
   const exFactors = allFactors.filter(f => f.stage === 'Salida');
@@ -185,9 +214,39 @@ export default function Dashboard() {
         <h1 style={{ fontSize: 18, fontWeight: 700, color: C.ink, margin: 0, letterSpacing: '-0.2px', lineHeight: 1.3 }}>
           Voz del Colaborador · Mutualista Pichincha
         </h1>
-        <p style={{ fontSize: 11.5, color: C.muted, margin: '2px 0 12px' }}>
+        <p style={{ fontSize: 11.5, color: C.muted, margin: '2px 0 8px' }}>
           ¿Cómo es la experiencia del colaborador durante su ciclo de vida y cuáles son los principales impulsores de satisfacción y riesgo de salida?
         </p>
+
+        {/* Periodo + toggle de comparación */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 12 }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11.5, fontWeight: 600, color: C.ink, background: '#f5f5f5', borderRadius: 1000, padding: '3px 11px' }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: C.primary, display: 'inline-block' }} />
+            Periodo: {PERIOD.current}
+          </span>
+          <button
+            onClick={() => setCompare(c => !c)}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer',
+              fontSize: 11.5, fontWeight: 600,
+              color: compare ? C.primary : C.muted,
+              background: compare ? '#e6f4ff' : '#fff',
+              border: `1px solid ${compare ? '#91caff' : '#e8e8e8'}`,
+              borderRadius: 1000, padding: '3px 11px',
+            }}
+          >
+            <span style={{
+              width: 26, height: 14, borderRadius: 1000, position: 'relative', flexShrink: 0,
+              background: compare ? C.primary : '#d9d9d9', transition: 'background 0.2s',
+            }}>
+              <span style={{
+                position: 'absolute', top: 2, left: compare ? 14 : 2, width: 10, height: 10,
+                borderRadius: '50%', background: '#fff', transition: 'left 0.2s',
+              }} />
+            </span>
+            Comparar con {PERIOD.previous}{PERIOD.previousSimulated ? ' (simulado)' : ''}
+          </button>
+        </div>
 
         {/* Fila de filtros colapsable */}
         <motion.div
@@ -266,7 +325,10 @@ export default function Dashboard() {
         <Card delay={0}>
           <div style={{ fontSize: 11, fontWeight: 600, color: C.ink, marginBottom: 2 }}>Total participantes</div>
           <div style={{ fontSize: 11, color: C.muted, marginBottom: 10 }}>Respuestas analizadas</div>
-          <div style={{ fontSize: 40, fontWeight: 800, color: C.ink, lineHeight: 1.05, marginBottom: 12 }}>{stats.total}</div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 12 }}>
+            <span style={{ fontSize: 40, fontWeight: 800, color: C.ink, lineHeight: 1.05 }}>{stats.total}</span>
+            {compare && <Delta diff={stats.total - prevStats.total} />}
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {byType.map((d) => (
               <div key={d.type} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11.5 }}>
@@ -290,9 +352,16 @@ export default function Dashboard() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ fontSize: 44, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12 }}>
+              <div style={{ fontSize: 44, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 4 }}>
                 {stats.enps}<span style={{ fontSize: 18, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
               </div>
+              {compare && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12, fontSize: 10.5, color: C.muted }}>
+                  <Delta diff={stats.enps - prevStats.enps} suffix=" pts" />
+                  <span>vs. {PERIOD.previous} ({prevStats.enps})</span>
+                </div>
+              )}
+              {!compare && <div style={{ marginBottom: 12 }} />}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                 {donutData.map(d => (
                   <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5 }}>
@@ -352,7 +421,22 @@ export default function Dashboard() {
               </Bar>
               <Line yAxisId="right" type="monotone" dataKey="enps" name="eNPS" stroke={C.primary} strokeWidth={2.5}
                 dot={{ fill: C.primary, r: 4, strokeWidth: 0 }}
-                label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => v }} />
+                label={(props: any) => {
+                  const { x, y, value, index } = props;
+                  const d = byType[index];
+                  const diff = d ? d.enps - d.prevEnps : 0;
+                  const col = diff > 0 ? '#389e0d' : diff < 0 ? '#cf1322' : '#bfbfbf';
+                  return (
+                    <g>
+                      <text x={x} y={y - 10} textAnchor="middle" fontSize={11} fontWeight={800} fill={C.primary}>{value}</text>
+                      {compare && d && (
+                        <text x={x} y={y - 22} textAnchor="middle" fontSize={9.5} fontWeight={700} fill={col}>
+                          {diff > 0 ? '▲ +' : diff < 0 ? '▼ ' : '= '}{diff !== 0 ? diff : ''}
+                        </text>
+                      )}
+                    </g>
+                  );
+                }} />
             </ComposedChart>
           </ResponsiveContainer>
           </div>
@@ -406,7 +490,12 @@ export default function Dashboard() {
                   <span style={{ width: 24, height: 24, borderRadius: 7, background: j.color + '1f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{j.icon}</span>
                   <div style={{ fontSize: 11, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
                 </div>
-                <div style={{ fontSize: 30, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12, textAlign: 'center' }}>{j.satisfaction}%</div>
+                <div style={{ fontSize: 30, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: compare ? 3 : 12, textAlign: 'center' }}>{j.satisfaction}%</div>
+                {compare && (
+                  <div style={{ textAlign: 'center', marginBottom: 12 }}>
+                    <Delta diff={j.satisfaction - j.prevSatisfaction} size={10} suffix=" pts" />
+                  </div>
+                )}
                 {j.best && (
                   <div style={{ marginBottom: 8 }}>
                     <div style={{ fontSize: 9.5, color: C.promoter, fontWeight: 700, marginBottom: 2 }}>▲ Fortaleza</div>
@@ -435,11 +524,11 @@ export default function Dashboard() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
             <Card delay={0.04}>
               <CardTitle title="Top 5 Fortalezas" sub="Factores mejor evaluados" />
-              <FactorList items={top5} color={C.promoter} bg="#f6ffed" />
+              <FactorList items={top5} color={C.promoter} bg="#f6ffed" prevScores={prevFactorScore} compare={compare} />
             </Card>
             <Card delay={0.08}>
               <CardTitle title="Top 5 Áreas a Mejorar" sub="Factores con menor evaluación" />
-              <FactorList items={bottom5} color={C.detractor} bg="#fff1f0" dim />
+              <FactorList items={bottom5} color={C.detractor} bg="#fff1f0" dim prevScores={prevFactorScore} compare={compare} />
             </Card>
           </div>
 
@@ -465,7 +554,7 @@ export default function Dashboard() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
               <Card delay={0.04}>
                 <CardTitle title="Satisfacción con el Proceso de Salida" sub="Qué tan satisfechos quedaron con cada paso de su salida (1 = muy insatisfecho, 5 = muy satisfecho)" />
-                <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.bar} bg="#f1f5f9" valueScale />
+                <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.bar} bg="#f1f5f9" valueScale prevScores={prevFactorScore} compare={compare} />
               </Card>
               {exThemes.length > 0 && (
                 <Card delay={0.08}>
@@ -570,10 +659,12 @@ function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
 }
 
 
-function FactorList({ items, color, bg, dim, valueScale }: { items: { label: string; score: number }[]; color: string; bg: string; dim?: boolean; valueScale?: boolean }) {
+function FactorList({ items, color, bg, dim, valueScale, prevScores, compare }: { items: { label: string; score: number }[]; color: string; bg: string; dim?: boolean; valueScale?: boolean; prevScores?: Record<string, number>; compare?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-      {items.map((f, i) => (
+      {items.map((f, i) => {
+        const prev = prevScores?.[f.label];
+        return (
         <div key={f.label} style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           {!valueScale && (
             <div style={{ width: 19, height: 19, borderRadius: '50%', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9.5, fontWeight: 700, color, flexShrink: 0 }}>{i + 1}</div>
@@ -585,9 +676,13 @@ function FactorList({ items, color, bg, dim, valueScale }: { items: { label: str
                 style={{ height: '100%', background: color, borderRadius: 1000, opacity: dim ? 0.7 : 1 }} />
             </div>
           </div>
-          <span style={{ fontSize: 11, fontWeight: 700, color, flexShrink: 0 }}>{f.score.toFixed(2)}</span>
+          {compare && prev != null && (
+            <span style={{ flexShrink: 0, width: 46, textAlign: 'right' }}><Delta diff={f.score - prev} decimals={2} size={9.5} /></span>
+          )}
+          <span style={{ fontSize: 11, fontWeight: 700, color, flexShrink: 0, width: 30, textAlign: 'right' }}>{f.score.toFixed(2)}</span>
         </div>
-      ))}
+      );
+      })}
     </div>
   );
 }

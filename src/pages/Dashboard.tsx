@@ -393,6 +393,16 @@ export default function Dashboard() {
         {/* eNPS por Antigüedad */}
         <Card delay={0.12} style={{ display: 'flex', flexDirection: 'column' }}>
           <CardTitle title="eNPS por Antigüedad" sub="Click en una barra para filtrar el reporte" />
+          {compare && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 10.5, color: C.muted, marginTop: -6, marginBottom: 4 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ width: 16, height: 0, borderTop: `2.5px solid ${C.primary}`, display: 'inline-block' }} /> {PERIOD.current}
+              </span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+                <span style={{ width: 16, height: 0, borderTop: '2px dashed #bfbfbf', display: 'inline-block' }} /> {PERIOD.previous}
+              </span>
+            </div>
+          )}
           <div style={{ flex: 1, minHeight: 0 }}>
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={byType} margin={{ top: 20, right: 40, left: -24, bottom: 0 }}>
@@ -419,24 +429,13 @@ export default function Dashboard() {
                   <Cell key={i} fill={C.detractor} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.3 : 1} />
                 ))}
               </Bar>
+              {compare && (
+                <Line yAxisId="right" type="monotone" dataKey="prevEnps" name={`eNPS ${PERIOD.previous}`} stroke="#bfbfbf" strokeWidth={2} strokeDasharray="5 4"
+                  dot={{ fill: '#bfbfbf', r: 3, strokeWidth: 0 }} />
+              )}
               <Line yAxisId="right" type="monotone" dataKey="enps" name="eNPS" stroke={C.primary} strokeWidth={2.5}
                 dot={{ fill: C.primary, r: 4, strokeWidth: 0 }}
-                label={(props: any) => {
-                  const { x, y, value, index } = props;
-                  const d = byType[index];
-                  const diff = d ? d.enps - d.prevEnps : 0;
-                  const col = diff > 0 ? '#389e0d' : diff < 0 ? '#cf1322' : '#bfbfbf';
-                  return (
-                    <g>
-                      <text x={x} y={y - 10} textAnchor="middle" fontSize={11} fontWeight={800} fill={C.primary}>{value}</text>
-                      {compare && d && (
-                        <text x={x} y={y - 22} textAnchor="middle" fontSize={9.5} fontWeight={700} fill={col}>
-                          {diff > 0 ? '▲ +' : diff < 0 ? '▼ ' : '= '}{diff !== 0 ? diff : ''}
-                        </text>
-                      )}
-                    </g>
-                  );
-                }} />
+                label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => v }} />
             </ComposedChart>
           </ResponsiveContainer>
           </div>

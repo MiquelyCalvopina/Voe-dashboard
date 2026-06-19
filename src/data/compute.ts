@@ -138,6 +138,21 @@ export function factorAverages(records: Record[]): { label: string; score: numbe
   });
 }
 
+// Satisfacción = Top-2-Box: % de respuestas Likert con calificación 4 o 5
+// sobre el total de respuestas de los factores de una etapa.
+export function stageTopTwoBox(records: Record[], stageKey: string): number {
+  let positive = 0, total = 0;
+  for (const r of records) {
+    for (const [label, v] of Object.entries(r.factors)) {
+      if (FACTOR_CATALOG[label]?.stage === stageKey) {
+        total += 1;
+        if (v >= 4) positive += 1;
+      }
+    }
+  }
+  return total ? Math.round((positive / total) * 100) : 0;
+}
+
 export function comments(records: Record[]) {
   return records.filter(r => r.comment).map(r => ({
     source: r.source, comment: r.comment!, tema: r.tema, subtema: r.subtema,
@@ -153,8 +168,10 @@ export function exitThemes(records: Record[]) {
   return [...m.entries()].map(([tema, count]) => ({ tema, count })).sort((a, b) => b.count - a.count);
 }
 
+// Comentarios de ex-colaboradores: su comentario principal (motivo del eNPS),
+// que está presente para todos los ex-colaboradores que respondieron.
 export function exitComments(records: Record[]) {
-  return records.filter(r => r.exit_comment).map(r => ({
-    comment: r.exit_comment!, tema: r.exit_tema, sentimiento: r.exit_sentimiento, area: r.area, cat: r.cat,
+  return records.filter(r => r.source === 'Ex Colaboradores' && r.comment).map(r => ({
+    comment: r.comment!, tema: r.tema, sentimiento: r.sentimiento, area: r.area, cat: r.cat,
   }));
 }

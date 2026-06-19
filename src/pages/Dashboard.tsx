@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Button, Pagination } from 'antd';
 import {
   ALL_RECORDS, FILTER_OPTIONS, EMPTY_FILTERS, applyFilters, enpsStats, enpsStatus,
-  factorAverages, comments, exitThemes, exitComments,
+  factorAverages, comments, exitThemes, exitComments, stageTopTwoBox,
   type Filters,
 } from '../data/compute';
 
@@ -140,7 +140,7 @@ export default function Dashboard() {
     const best = [...stageFactors].sort((a, b) => b.score - a.score)[0];
     const worst = [...stageFactors].sort((a, b) => a.score - b.score)[0];
     return {
-      ...stage, avg: Math.round(avg * 100) / 100, satisfaction: Math.round((avg / 5) * 100),
+      ...stage, avg: Math.round(avg * 100) / 100, satisfaction: stageTopTwoBox(records, stage.key),
       enps: s.enps, n: s.total, best, worst,
     };
   }).filter(j => j.n > 0), [records, allFactors]);
@@ -358,7 +358,7 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN: JOURNEY ═══ */}
       <section>
-        <SectionHeader title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%)" />
+        <SectionHeader title="El Viaje del Colaborador" subtitle="% de colaboradores satisfechos (calificación 4-5) en cada etapa del ciclo de vida" />
         <Card delay={0} pad={20}>
           <div style={{ height: 96 }}>
             <ResponsiveContainer width="100%" height="100%">
@@ -370,14 +370,14 @@ export default function Dashboard() {
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="label" tick={false} axisLine={false} tickLine={false} height={0} />
-                <YAxis domain={[55, 92]} hide />
+                <YAxis domain={[45, 85]} hide />
                 <Tooltip content={({ active, payload }: any) => {
                   if (!active || !payload?.length) return null;
                   const d = payload[0].payload;
                   return (
                     <div style={{ background: '#fff', border: '1px solid #e8e8e8', borderRadius: 8, padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontSize: 11 }}>
                       <p style={{ fontWeight: 700, color: C.ink, margin: 0 }}>{d.label}</p>
-                      <p style={{ color: C.muted, margin: '2px 0 0' }}>Satisfacción: {d.satisfaction}% · eNPS {d.enps}</p>
+                      <p style={{ color: C.muted, margin: '2px 0 0' }}>Satisfechos (4-5): {d.satisfaction}% · eNPS {d.enps}</p>
                     </div>
                   );
                 }} />
@@ -467,7 +467,7 @@ export default function Dashboard() {
                   <CardTitle title="¿Cómo evitar la desvinculación?" sub="Lo que pudo retenerlos, según sus respuestas, de más a menos frecuente" />
                   <RankedBars
                     items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
-                    total={exCmts.length}
+                    total={exThemes.reduce((a, t) => a + t.count, 0)}
                     demoteLast={['Ninguna', 'Otros']}
                   />
                 </Card>
@@ -501,9 +501,10 @@ function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
   const from = totalCount ? (page - 1) * COMMENTS_PER_PAGE + 1 : 0;
   const to = Math.min(page * COMMENTS_PER_PAGE, totalCount);
   return (
+    <div style={{ position: 'relative', minWidth: 0 }}>
     <motion.div
       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay }}
-      style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}
+      style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', minHeight: 0, minWidth: 0 }}
     >
       {/* Encabezado: conteo + paginación numerada */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
@@ -559,6 +560,7 @@ function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
         </div>
       </div>
     </motion.div>
+    </div>
   );
 }
 

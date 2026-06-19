@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, Legend, PieChart, Pie,
-  AreaChart, Area, ReferenceLine,
+  AreaChart, Area, ReferenceLine, ComposedChart, Line,
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Tag, Input, Button } from 'antd';
@@ -27,6 +27,8 @@ const C = {
   orange: '#fa8c16',
   ink: '#1a1a2e',
   muted: '#8c8c8c',
+  bar: '#94a3b8',      // barra neutral (conteos sin significado de color)
+  barLight: '#cbd5e1', // neutral más suave (categorías "Otros")
 };
 const SENTIMENT_COLORS: Record<string, string> = {
   'Muy positivo': '#389e0d', 'Positivo': '#52c41a', 'Neutral': '#d4b106', 'Negativo': '#ff7a45', 'Muy negativo': '#f5222d',
@@ -97,6 +99,15 @@ const STAGES = [
   { key: 'Salida', label: 'Permanencia & Salida', icon: '🔄', color: C.pink, sources: ['Ex Colaboradores'] },
 ] as const;
 
+// source (origen de la encuesta) ↔ antiguedad son 1:1 en los datos.
+// El dropdown visible filtra por `antiguedad`, así que el clic en las barras
+// de eNPS debe usar la MISMA clave para no crear intersecciones vacías.
+const SOURCE_TO_ANT: Record<string, string> = {
+  '0-6 Meses': 'Menos de 6 meses',
+  '+6 Meses': 'Mas de 6 meses',
+  'Ex Colaboradores': 'Ex colaborador',
+};
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -108,20 +119,28 @@ export default function Dashboard() {
   const byType = useMemo(() =>
     FILTER_OPTIONS.source.map(src => {
       const s = enpsStats(records.filter(r => r.source === src));
-      return { type: src, label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
+      return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
     }).filter(d => d.total > 0)
   , [records]);
-  const themes = useMemo(() => themeCounts(records), [records]);
-  const sentiments = useMemo(() => sentimentCounts(records), [records]);
+  // Voz del Colaborador: SOLO encuestas de experiencia (0-6m + +6m), nunca ex colaboradores
+  const expRecords = useMemo(() => records.filter(r => r.source !== 'Ex Colaboradores'), [records]);
+  const themes = useMemo(() => themeCounts(expRecords), [expRecords]);
+  const sentiments = useMemo(() => sentimentCounts(expRecords), [expRecords]);
   const allFactors = useMemo(() => factorAverages(records), [records]);
-  const cmts = useMemo(() => comments(records), [records]);
+  const cmts = useMemo(() => comments(expRecords), [expRecords]);
   const exThemes = useMemo(() => exitThemes(records), [records]);
   const exCmts = useMemo(() => exitComments(records), [records]);
   const genderDemo = useMemo(() => demographic(records, 'genero'), [records]);
   const areaDemo = useMemo(() => demographic(records, 'area'), [records]);
 
-  const top5 = [...allFactors].sort((a, b) => b.score - a.score).slice(0, 5);
-  const bottom5 = [...allFactors].sort((a, b) => a.score - b.score).slice(0, 5);
+  // Drivers reales: solo factores con muestra confiable (nD≥5 y nP≥5)
+  // Fortalezas = promedio ≥ mediana, ordenados por brecha P−D desc
+  // Áreas a mejorar = promedio < mediana, ordenados por brecha P−D desc
+  const reliableFactors = allFactors.filter(f => f.gap !== null);
+  const scores = reliableFactors.map(f => f.score).sort((a, b) => a - b);
+  const median = scores.length ? scores[Math.floor(scores.length / 2)] : 3.75;
+  const top5 = reliableFactors.filter(f => f.score >= median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
+  const bottom5 = reliableFactors.filter(f => f.score < median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
 
   // Journey: avg satisfaction (1-5 → %) per stage
   const journey = useMemo(() => STAGES.map(stage => {
@@ -139,15 +158,15 @@ export default function Dashboard() {
 
   // Promoters vs detractors by theme
   const themesComparison = useMemo(() => {
-    const promoTh = themeCounts(records.filter(r => r.cat === 'Promotor'));
-    const detrTh = themeCounts(records.filter(r => r.cat === 'Detractor'));
+    const promoTh = themeCounts(expRecords.filter(r => r.cat === 'Promotor'));
+    const detrTh = themeCounts(expRecords.filter(r => r.cat === 'Detractor'));
     const names = [...new Set([...promoTh.map(t => t.tema), ...detrTh.map(t => t.tema)])];
     return names.map(tema => ({
       tema,
       Promotores: promoTh.find(t => t.tema === tema)?.count || 0,
       Detractores: detrTh.find(t => t.tema === tema)?.count || 0,
     })).sort((a, b) => (b.Promotores + b.Detractores) - (a.Promotores + a.Detractores));
-  }, [records]);
+  }, [expRecords]);
 
   const exStats = useMemo(() => enpsStats(records.filter(r => r.source === 'Ex Colaboradores')), [records]);
   const exFactors = allFactors.filter(f => f.stage === 'Salida');
@@ -203,9 +222,8 @@ export default function Dashboard() {
               </Button>
             )}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 8 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 8 }}>
             {([
-              ['source', 'Tipo colaborador', FILTER_OPTIONS.source],
               ['area', 'Área', FILTER_OPTIONS.area],
               ['ciudad', 'Ciudad', FILTER_OPTIONS.ciudad],
               ['nivel', 'Cargo', FILTER_OPTIONS.nivel],
@@ -296,22 +314,36 @@ export default function Dashboard() {
 
           {/* eNPS por tipo */}
           <Card delay={0.16}>
-            <CardTitle title="eNPS por Tipo de Colaborador" sub="Click en una barra para filtrar el reporte" />
-            <ResponsiveContainer width="100%" height={150}>
-              <BarChart data={byType} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
+            <CardTitle title="eNPS por Antigüedad" sub="Distribución Promotores / Neutros / Detractores (%) y línea de eNPS por grupo · clic para filtrar" />
+            <ResponsiveContainer width="100%" height={180}>
+              <ComposedChart data={byType} margin={{ top: 14, right: 44, left: -22, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
                 <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                <YAxis yAxisId="left" domain={[0, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+                <YAxis yAxisId="right" orientation="right" domain={[-100, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
                 <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                <Bar dataKey="enps" name="eNPS" radius={[7, 7, 0, 0]} maxBarSize={56} cursor="pointer"
-                  activeBar={false} onClick={(d: any) => toggleFilter('source', d.type)}
-                  label={{ position: 'top', fontSize: 12, fontWeight: 800, fill: C.ink }}>
+                <Bar yAxisId="left" dataKey="pct_promoters" name="Promotores %" stackId="dist" fill={C.promoter} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
                   {byType.map((d, i) => (
-                    <Cell key={i} fill={filters.source.includes(d.type) ? C.primary : enpsStatus(d.enps).color}
-                      opacity={filters.source.length && !filters.source.includes(d.type) ? 0.4 : 1} />
+                    <Cell key={i} fill={C.promoter} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
                   ))}
                 </Bar>
-              </BarChart>
+                <Bar yAxisId="left" dataKey="pct_neutrals" name="Neutros %" stackId="dist" fill={C.neutral} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
+                  {byType.map((d, i) => (
+                    <Cell key={i} fill={C.neutral} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
+                  ))}
+                </Bar>
+                <Bar yAxisId="left" dataKey="pct_detractors" name="Detractores %" stackId="dist" fill={C.detractor} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
+                  {byType.map((d, i) => (
+                    <Cell key={i} fill={C.detractor} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
+                  ))}
+                </Bar>
+                <Line yAxisId="right" type="monotone" dataKey="enps" name="eNPS" stroke={C.primary} strokeWidth={2.5}
+                  dot={{ fill: C.primary, r: 4, strokeWidth: 0 }}
+                  label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => v }} />
+              </ComposedChart>
             </ResponsiveContainer>
           </Card>
         </div>
@@ -319,7 +351,7 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 2: JOURNEY ═══ */}
       <section>
-        <SectionHeader n={2} title="El Viaje del Colaborador" subtitle="Cómo evoluciona la satisfacción a lo largo del ciclo de vida (promedio escala 1-5)" />
+        <SectionHeader n={2} title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%). Cuanto más alto, mejor la experiencia vivida." />
 
         <Card delay={0} pad={22}>
           {/* Journey curve */}
@@ -396,7 +428,7 @@ export default function Dashboard() {
         <SectionHeader n={3} title="Drivers de Satisfacción y Riesgo de Salida" subtitle="Qué impulsa a los promotores y qué genera detractores" />
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: GAP, marginBottom: GAP }}>
           <Card delay={0.05}>
-            <CardTitle title="Promotores vs Detractores · Temas mencionados" />
+            <CardTitle title="Promotores vs Detractores · Temas mencionados" sub="Sobre qué hablan quienes recomiendan (verde) vs. quienes no (rojo)" />
             <ResponsiveContainer width="100%" height={190}>
               <BarChart data={themesComparison} margin={{ top: 0, right: 8, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -411,9 +443,9 @@ export default function Dashboard() {
           </Card>
 
           <Card delay={0.1}>
-            <CardTitle title="Heatmap de Factores" sub="Promedio de acuerdo por factor (escala 1-5)" />
+            <CardTitle title="Satisfacción por Atributo" sub="Qué tan satisfechos están con cada atributo (1 a 5). Verde = alta, rojo = baja." />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5, maxHeight: 190, overflowY: 'auto' }}>
-              {[...allFactors].sort((a, b) => b.score - a.score).slice(0, 12).map((f, i) => {
+              {allFactors.filter(f => f.stage !== 'Salida').sort((a, b) => b.score - a.score).slice(0, 12).map((f, i) => {
                 const t = Math.min(1, Math.max(0, (f.score - 3.4) / 1.6));
                 const r = Math.round(255 - t * 173), g = Math.round(77 + t * 119), b = Math.round(79 - t * 53);
                 return (
@@ -430,11 +462,11 @@ export default function Dashboard() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP }}>
           <Card delay={0.15}>
-            <CardTitle title="Top 5 Fortalezas" sub="Factores mejor evaluados" />
+            <CardTitle title="Top 5 Fortalezas" sub="Atributos de satisfacción que más convierten a un colaborador en promotor" />
             <FactorList items={top5} color={C.promoter} bg="#f6ffed" />
           </Card>
           <Card delay={0.2}>
-            <CardTitle title="Top 5 Áreas a Mejorar" sub="Factores con menor evaluación" />
+            <CardTitle title="Top 5 Áreas a Mejorar" sub="Atributos de satisfacción que más empujan a un colaborador a volverse detractor" />
             <FactorList items={bottom5} color={C.detractor} bg="#fff1f0" dim />
           </Card>
         </div>
@@ -442,79 +474,64 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 4: VOZ ═══ */}
       <section>
-        <SectionHeader n={4} title="Voz del Colaborador" subtitle="Qué dicen en sus comentarios abiertos" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: GAP, marginBottom: GAP }}>
-          <Card delay={0.05}>
-            <CardTitle title="Temas Frecuentes" sub={`${cmts.length} comentarios · click para filtrar`} />
-            <ResponsiveContainer width="100%" height={180}>
-              <BarChart data={themes} layout="vertical" margin={{ top: 0, right: 28, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
-                <XAxis type="number" tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
-                <YAxis type="category" dataKey="tema" width={84} tick={{ fontSize: 11, fill: '#595959' }} axisLine={false} tickLine={false} />
-                <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                <Bar dataKey="count" name="Menciones" radius={[0, 6, 6, 0]} maxBarSize={18} cursor="pointer" activeBar={false}
-                  onClick={(d: any) => toggleFilter('tema', d.tema)}
-                  label={{ position: 'right', fontSize: 10, fill: '#8c8c8c' }}>
-                  {themes.map((t, i) => (
-                    <Cell key={i} fill={PALETTE[i % PALETTE.length]}
-                      opacity={filters.tema.length && !filters.tema.includes(t.tema) ? 0.4 : 1} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </Card>
+        <SectionHeader n={4} title="Voz del Colaborador" subtitle="Qué dicen los colaboradores activos en sus comentarios (encuestas 0-6 y +6 meses)" />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: GAP, alignItems: 'start' }}>
 
-          <Card delay={0.1}>
-            <CardTitle title="Distribución de Sentimiento" sub="Click para filtrar el reporte" />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {sentimentOrder.map(sent => {
-                const found = sentiments.find(s => s.sentimiento === sent);
-                if (!found) return null;
-                const pct = totalSentiments ? Math.round((found.count / totalSentiments) * 100) : 0;
-                const color = SENTIMENT_COLORS[sent];
-                const active = filters.sentimiento.includes(sent);
-                return (
-                  <div key={sent} onClick={() => toggleFilter('sentimiento', sent)}
-                    style={{ cursor: 'pointer', opacity: filters.sentimiento.length && !active ? 0.45 : 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <span style={{ width: 7, height: 7, borderRadius: '50%', background: color }} />
-                        <span style={{ fontSize: 11, color: '#595959', fontWeight: active ? 700 : 400 }}>{sent}</span>
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color }}>{pct}%</span>
+          {/* ── Primera columna: gráficas de categorización ── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
+
+            {/* Sentimiento general — barra divergente 100% */}
+            <Card delay={0.05}>
+              <CardTitle title="Sentimiento General" sub={`Tono de los ${totalSentiments} comentarios: positivo (verde) a negativo (rojo) · clic para filtrar`} />
+              <SentimentBar
+                data={sentiments}
+                total={totalSentiments}
+                order={sentimentOrder}
+                colors={SENTIMENT_COLORS}
+                active={filters.sentimiento}
+                onToggle={(s) => toggleFilter('sentimiento', s)}
+              />
+            </Card>
+
+            {/* Temas mencionados — lista rankeada que crece */}
+            <Card delay={0.1}>
+              <CardTitle title="Temas Mencionados" sub="Sobre qué hablan los comentarios, de más a menos frecuente · clic para filtrar" />
+              <RankedBars
+                items={themes.map(t => ({ label: t.tema, value: t.count }))}
+                total={totalSentiments}
+                active={filters.tema}
+                onToggle={(t) => toggleFilter('tema', t)}
+                demoteLast={['Otros']}
+              />
+            </Card>
+          </div>
+
+          {/* ── Segunda columna: comentarios verbatim ── */}
+          <Card delay={0.15}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, gap: 12 }}>
+              <CardTitle title="Comentarios Verbatim" sub={`${filteredComments.length} comentarios`} />
+              <Search placeholder="Buscar en comentarios..." onChange={e => setCommentSearch(e.target.value)} size="small" allowClear style={{ maxWidth: 240 }} />
+            </div>
+            <div style={{ maxHeight: 560, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <AnimatePresence>
+                {filteredComments.slice(0, 60).map((c, i) => (
+                  <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: i * 0.012 }}
+                    style={{ padding: '10px 13px', background: '#fafafa', borderRadius: 9, border: '1px solid #f0f0f0', borderLeft: `3px solid ${SENTIMENT_COLORS[c.sentimiento || ''] || '#d9d9d9'}` }}>
+                    <div style={{ display: 'flex', gap: 5, marginBottom: 5, flexWrap: 'wrap' }}>
+                      {c.cat && <Tag color={ENPS_COLORS[c.cat] || 'default'} style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.cat}</Tag>}
+                      <Tag color="blue" style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.source}</Tag>
+                      {c.tema && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.tema}</Tag>}
+                      {c.sentimiento && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0, background: `${SENTIMENT_COLORS[c.sentimiento]}22`, borderColor: SENTIMENT_COLORS[c.sentimiento], color: SENTIMENT_COLORS[c.sentimiento] }}>{c.sentimiento}</Tag>}
                     </div>
-                    <ProgressBar pct={pct} color={color} delay={0.15} />
-                  </div>
-                );
-              })}
+                    <p style={{ fontSize: 11.5, color: '#595959', margin: 0, lineHeight: 1.5 }}>{c.comment}</p>
+                    {c.area && <div style={{ fontSize: 9.5, color: '#bfbfbf', marginTop: 4 }}>📍 {c.area}</div>}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+              {filteredComments.length === 0 && <div style={{ textAlign: 'center', padding: '28px 0', color: '#bfbfbf', fontSize: 12 }}>Sin resultados</div>}
             </div>
           </Card>
         </div>
-
-        <Card delay={0.15}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, gap: 12 }}>
-            <CardTitle title="Comentarios Verbatim" sub={`${filteredComments.length} comentarios`} />
-            <Search placeholder="Buscar en comentarios..." onChange={e => setCommentSearch(e.target.value)} size="small" allowClear style={{ maxWidth: 280 }} />
-          </div>
-          <div style={{ maxHeight: 320, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <AnimatePresence>
-              {filteredComments.slice(0, 40).map((c, i) => (
-                <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ delay: i * 0.015 }}
-                  style={{ padding: '10px 13px', background: '#fafafa', borderRadius: 9, border: '1px solid #f0f0f0', borderLeft: `3px solid ${SENTIMENT_COLORS[c.sentimiento || ''] || '#d9d9d9'}` }}>
-                  <div style={{ display: 'flex', gap: 5, marginBottom: 5, flexWrap: 'wrap' }}>
-                    {c.cat && <Tag color={ENPS_COLORS[c.cat] || 'default'} style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.cat}</Tag>}
-                    <Tag color="blue" style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.source}</Tag>
-                    {c.tema && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0 }}>{c.tema}</Tag>}
-                    {c.sentimiento && <Tag style={{ fontSize: 10, borderRadius: 1000, margin: 0, background: `${SENTIMENT_COLORS[c.sentimiento]}22`, borderColor: SENTIMENT_COLORS[c.sentimiento], color: SENTIMENT_COLORS[c.sentimiento] }}>{c.sentimiento}</Tag>}
-                  </div>
-                  <p style={{ fontSize: 11.5, color: '#595959', margin: 0, lineHeight: 1.5 }}>{c.comment}</p>
-                  {c.area && <div style={{ fontSize: 9.5, color: '#bfbfbf', marginTop: 4 }}>📍 {c.area}</div>}
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            {filteredComments.length === 0 && <div style={{ textAlign: 'center', padding: '28px 0', color: '#bfbfbf', fontSize: 12 }}>Sin resultados</div>}
-          </div>
-        </Card>
       </section>
 
       {/* ═══ SECCIÓN 5: EX COLABORADORES ═══ */}
@@ -523,24 +540,19 @@ export default function Dashboard() {
           <SectionHeader n={5} title="Ex Colaboradores · Proceso de Salida" subtitle="Qué se llevaron al salir y qué pudo evitar su desvinculación" />
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP }}>
             <Card delay={0.05}>
-              <CardTitle title="Evaluación del Proceso de Salida" sub="Promedio de acuerdo (escala 1-5)" />
-              <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.pink} bg="#fff0f6" valueScale />
+              <CardTitle title="Satisfacción con el Proceso de Salida" sub="Qué tan satisfechos quedaron con cada paso de su salida (1 = muy insatisfecho, 5 = muy satisfecho)" />
+              <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.bar} bg="#f1f5f9" valueScale />
             </Card>
             <Card delay={0.1}>
-              <CardTitle title="¿Cómo evitar la desvinculación?" sub="Temas en respuestas abiertas" />
+              <CardTitle title="¿Cómo evitar la desvinculación?" sub="Lo que pudo retenerlos, según sus respuestas, de más a menos frecuente · clic para filtrar" />
               {exThemes.length > 0 ? (
-                <ResponsiveContainer width="100%" height={190}>
-                  <BarChart data={exThemes} margin={{ top: 14, right: 16, left: -22, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
-                    <XAxis dataKey="tema" tick={{ fontSize: 10, fill: '#595959' }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
-                    <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                    <Bar dataKey="count" name="Menciones" radius={[6, 6, 0, 0]} maxBarSize={44} activeBar={false}
-                      label={{ position: 'top', fontSize: 10, fill: '#8c8c8c' }}>
-                      {exThemes.map((_, i) => <Cell key={i} fill={`hsl(${330 + i * 28}, 64%, ${58 + i * 4}%)`} />)}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                <RankedBars
+                  items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
+                  total={exCmts.length}
+                  active={filters.exit_tema}
+                  onToggle={(t) => toggleFilter('exit_tema', t)}
+                  demoteLast={['Otros']}
+                />
               ) : <div style={{ padding: '40px 0', textAlign: 'center', color: '#bfbfbf', fontSize: 12 }}>Sin datos para este filtro</div>}
             </Card>
           </div>
@@ -566,10 +578,10 @@ export default function Dashboard() {
 
       {/* ═══ SECCIÓN 6: BENCHMARK ═══ */}
       <section>
-        <SectionHeader n={6} title="Benchmark Interno" subtitle="Cómo se comparan los distintos segmentos" />
+        <SectionHeader n={6} title="Benchmark Interno" subtitle="Compara la experiencia entre grupos para detectar dónde enfocar los esfuerzos" />
         <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr', gap: GAP }}>
           <Card delay={0.05}>
-            <CardTitle title="eNPS por Segmento" sub="Comparación por tipo de colaborador" />
+            <CardTitle title="eNPS por Segmento" sub="Índice de recomendación (−100 a +100) por antigüedad. Más alto = más promotores." />
             <ResponsiveContainer width="100%" height={170}>
               <BarChart data={byType} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
@@ -579,19 +591,19 @@ export default function Dashboard() {
                 <ReferenceLine y={0} stroke="#d9d9d9" />
                 <Bar dataKey="enps" name="eNPS" radius={[6, 6, 0, 0]} maxBarSize={56} activeBar={false}
                   label={{ position: 'top', fontSize: 11, fontWeight: 700, fill: C.ink }}>
-                  {byType.map((_, i) => <Cell key={i} fill={PALETTE[i]} />)}
+                  {byType.map((d, i) => <Cell key={i} fill={enpsStatus(d.enps).color} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </Card>
 
           <Card delay={0.1}>
-            <CardTitle title="Por Género" sub="Distribución de participantes" />
+            <CardTitle title="Por Género" sub="Cómo se reparten los participantes de la encuesta por género" />
             <DemoBars items={genderDemo} total={genderDemo.reduce((a, b) => a + b.value, 0)} />
           </Card>
 
           <Card delay={0.15}>
-            <CardTitle title="Top Áreas" sub="Participantes por área" />
+            <CardTitle title="Top Áreas" sub="Áreas con mayor participación en la encuesta" />
             <DemoBars items={areaDemo.slice(0, 6)} total={areaDemo.reduce((a, b) => a + b.value, 0)} small />
           </Card>
         </div>
@@ -623,6 +635,113 @@ function FactorList({ items, color, bg, dim, valueScale }: { items: { label: str
   );
 }
 
+// ── Sentimiento: barra divergente 100% apilada (estándar CX) ────────────────────
+function SentimentBar({ data, total, order, colors, active, onToggle }: {
+  data: { sentimiento: string; count: number }[];
+  total: number;
+  order: string[];
+  colors: Record<string, string>;
+  active: string[];
+  onToggle: (s: string) => void;
+}) {
+  const get = (s: string) => data.find(d => d.sentimiento === s)?.count || 0;
+  // De más negativo a más positivo para la barra (izq → der)
+  const barOrder = [...order].reverse();
+  const posPct = total ? Math.round(((get('Muy positivo') + get('Positivo')) / total) * 100) : 0;
+  const negPct = total ? Math.round(((get('Muy negativo') + get('Negativo')) / total) * 100) : 0;
+
+  return (
+    <div>
+      {/* Titular: balance de sentimiento */}
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
+        <span style={{ fontSize: 32, fontWeight: 800, color: C.promoter, lineHeight: 1 }}>{posPct}%</span>
+        <span style={{ fontSize: 11, color: C.muted }}>positivo</span>
+        <span style={{ marginLeft: 'auto', fontSize: 11, color: C.muted }}>
+          <span style={{ color: C.detractor, fontWeight: 700 }}>{negPct}%</span> negativo
+        </span>
+      </div>
+
+      {/* Barra 100% apilada */}
+      <div style={{ display: 'flex', width: '100%', height: 16, borderRadius: 1000, overflow: 'hidden', background: '#f5f5f5' }}>
+        {barOrder.map(s => {
+          const count = get(s);
+          if (!count) return null;
+          const pct = (count / total) * 100;
+          const dim = active.length && !active.includes(s);
+          return (
+            <motion.div key={s} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.7, ease: 'easeOut' }}
+              onClick={() => onToggle(s)} title={`${s}: ${Math.round(pct)}% (${count})`}
+              style={{ height: '100%', background: colors[s], cursor: 'pointer', opacity: dim ? 0.35 : 1 }} />
+          );
+        })}
+      </div>
+
+      {/* Leyenda alineada en grilla (crece en filas) */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px', marginTop: 14 }}>
+        {order.map(s => {
+          const count = get(s);
+          const pct = total ? Math.round((count / total) * 100) : 0;
+          const isActive = active.includes(s);
+          return (
+            <div key={s} onClick={() => onToggle(s)}
+              style={{ display: 'flex', alignItems: 'center', gap: 7, cursor: 'pointer', opacity: active.length && !isActive ? 0.4 : 1 }}>
+              <span style={{ width: 9, height: 9, borderRadius: 3, background: colors[s], flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: '#595959', fontWeight: isActive ? 700 : 400, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s}</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: colors[s], flexShrink: 0 }}>{pct}%</span>
+              <span style={{ fontSize: 10, color: '#bfbfbf', flexShrink: 0, width: 30, textAlign: 'right' }}>({count})</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Categorización rankeada: columnas cuadradas, crece en N categorías ──────────
+function RankedBars({ items, total, active, onToggle, demoteLast = [] }: {
+  items: { label: string; value: number }[];
+  total: number;
+  active: string[];
+  onToggle: (label: string) => void;
+  demoteLast?: string[];
+}) {
+  // Orden por frecuencia, pero las categorías "cajón de sastre" siempre al final
+  const sorted = [...items].sort((a, b) => {
+    const da = demoteLast.includes(a.label) ? 1 : 0;
+    const db = demoteLast.includes(b.label) ? 1 : 0;
+    if (da !== db) return da - db;
+    return b.value - a.value;
+  });
+  const max = Math.max(1, ...items.map(i => i.value));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 7, maxHeight: 260, overflowY: 'auto' }}>
+      {sorted.map((it, i) => {
+        const isOther = demoteLast.includes(it.label);
+        const color = isOther ? C.barLight : C.bar;
+        const isActive = active.includes(it.label);
+        const pct = total ? Math.round((it.value / total) * 100) : 0;
+        return (
+          <div key={it.label} onClick={() => onToggle(it.label)}
+            style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', height: 26,
+              opacity: active.length && !isActive ? 0.4 : 1 }}>
+            {/* Etiqueta: columna fija */}
+            <span style={{ width: 96, fontSize: 11, fontWeight: isActive ? 700 : 400, color: '#595959', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flexShrink: 0 }} title={it.label}>{it.label}</span>
+            {/* Barra: flexible */}
+            <div style={{ flex: 1, minWidth: 0, height: 10, background: '#f5f5f5', borderRadius: 1000, overflow: 'hidden' }}>
+              <motion.div initial={{ width: 0 }} animate={{ width: `${(it.value / max) * 100}%` }} transition={{ duration: 0.6, delay: 0.05 + i * 0.04, ease: 'easeOut' }}
+                style={{ height: '100%', background: color, borderRadius: 1000 }} />
+            </div>
+            {/* Conteo + %: columnas fijas alineadas a la derecha */}
+            <span style={{ width: 28, fontSize: 11, fontWeight: 700, color: '#262626', textAlign: 'right', flexShrink: 0 }}>{it.value}</span>
+            <span style={{ width: 36, fontSize: 10.5, color: C.muted, textAlign: 'right', flexShrink: 0 }}>{pct}%</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function DemoBars({ items, total, small }: { items: { label: string; value: number }[]; total: number; small?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: small ? 7 : 11 }}>
@@ -632,9 +751,9 @@ function DemoBars({ items, total, small }: { items: { label: string; value: numb
           <div key={d.label}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
               <span style={{ fontSize: small ? 10 : 11, color: '#595959' }} title={d.label}>{trunc(d.label, 28)}</span>
-              <span style={{ fontSize: small ? 10 : 11, fontWeight: 700, color: PALETTE[i % PALETTE.length] }}>{pct}%</span>
+              <span style={{ fontSize: small ? 10 : 11, fontWeight: 700, color: '#262626' }}>{pct}%</span>
             </div>
-            <ProgressBar pct={pct} color={PALETTE[i % PALETTE.length]} delay={0.1 + i * 0.04} h={small ? 6 : 8} />
+            <ProgressBar pct={pct} color={C.bar} delay={0.1 + i * 0.04} h={small ? 6 : 8} />
           </div>
         );
       })}

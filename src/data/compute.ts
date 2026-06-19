@@ -39,10 +39,11 @@ export type Filters = {
   generacion: string[];
   tema: string[];
   sentimiento: string[];
+  exit_tema: string[];
 };
 
 export const EMPTY_FILTERS: Filters = {
-  source: [], area: [], ciudad: [], nivel: [], antiguedad: [], genero: [], generacion: [], tema: [], sentimiento: [],
+  source: [], area: [], ciudad: [], nivel: [], antiguedad: [], genero: [], generacion: [], tema: [], sentimiento: [], exit_tema: [],
 };
 
 export function applyFilters(records: Record[], f: Filters): Record[] {
@@ -56,6 +57,7 @@ export function applyFilters(records: Record[], f: Filters): Record[] {
     if (f.generacion.length && (!r.generacion || !f.generacion.includes(r.generacion))) return false;
     if (f.tema.length && (!r.tema || !f.tema.includes(r.tema))) return false;
     if (f.sentimiento.length && (!r.sentimiento || !f.sentimiento.includes(r.sentimiento))) return false;
+    if (f.exit_tema.length && (!r.exit_tema || !f.exit_tema.includes(r.exit_tema))) return false;
     return true;
   });
 }
@@ -110,20 +112,30 @@ export function demographic(records: Record[], key: keyof Record) {
   return countBy(records, key).map(x => ({ label: x.label, value: x.count }));
 }
 
-export function factorAverages(records: Record[]): { label: string; score: number; stage: string }[] {
-  const sums = new Map<string, { sum: number; n: number }>();
+export function factorAverages(records: Record[]): { label: string; score: number; stage: string; gap: number | null; nP: number; nD: number }[] {
+  const sums = new Map<string, { sum: number; n: number; promoSum: number; promoN: number; detrSum: number; detrN: number }>();
   for (const r of records) {
     for (const [label, val] of Object.entries(r.factors)) {
-      const cur = sums.get(label) || { sum: 0, n: 0 };
+      const cur = sums.get(label) || { sum: 0, n: 0, promoSum: 0, promoN: 0, detrSum: 0, detrN: 0 };
       cur.sum += val; cur.n += 1;
+      if (r.cat === 'Promotor') { cur.promoSum += val; cur.promoN += 1; }
+      if (r.cat === 'Detractor') { cur.detrSum += val; cur.detrN += 1; }
       sums.set(label, cur);
     }
   }
-  return [...sums.entries()].map(([label, { sum, n }]) => ({
-    label,
-    score: Math.round((sum / n) * 100) / 100,
-    stage: FACTOR_CATALOG[label]?.stage || 'Otros',
-  }));
+  return [...sums.entries()].map(([label, s]) => {
+    const gap = (s.promoN >= 5 && s.detrN >= 5)
+      ? Math.round(((s.promoSum / s.promoN) - (s.detrSum / s.detrN)) * 100) / 100
+      : null;
+    return {
+      label,
+      score: Math.round((s.sum / s.n) * 100) / 100,
+      stage: FACTOR_CATALOG[label]?.stage || 'Otros',
+      gap,
+      nP: s.promoN,
+      nD: s.detrN,
+    };
+  });
 }
 
 export function comments(records: Record[]) {

@@ -4,24 +4,33 @@ import './index.css';
 
 export default function App() {
   return (
-    <div
-      style={{
-        width: '100vw',
-        minHeight: '100vh',
-        backgroundColor: '#f9f9f9',
-        position: 'relative',
-      }}
-    >
+    <div style={{ display: 'flex', width: '100%', height: '100%' }}>
       <Sidebar />
-      <Navbar />
+      {/*
+        El sidebar es position:fixed (fuera del flujo normal).
+        paddingLeft compensa su ancho para que el contenido no quede debajo.
+      */}
       <div
         style={{
-          marginLeft: '60px',
-          marginTop: '50px',
-          minHeight: 'calc(100vh - 50px)',
-          backgroundColor: '#ffffff',
+          paddingLeft: '60px',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          minWidth: 0,
         }}
-      />
+      >
+        <Navbar />
+        <main
+          style={{
+            flex: 1,
+            marginTop: '50px',
+            backgroundColor: '#ffffff',
+            overflow: 'auto',
+            minHeight: 0,
+          }}
+        />
+      </div>
     </div>
   );
 }

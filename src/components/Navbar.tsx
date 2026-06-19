@@ -34,7 +34,8 @@ export default function Navbar() {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0px',
+            minWidth: 0,
+            flex: 1,
           }}
         >
           {/* Hamburger button */}
@@ -49,41 +50,11 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           >
-            <div style={{ position: 'relative', width: '20px', height: '14px' }}>
-              <span
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '20px',
-                  height: '2px',
-                  backgroundColor: '#76838f',
-                  borderRadius: '10px',
-                }}
-              />
-              <span
-                style={{
-                  position: 'absolute',
-                  top: '6px',
-                  left: 0,
-                  width: '15px',
-                  height: '2px',
-                  backgroundColor: '#76838f',
-                  borderRadius: '10px',
-                }}
-              />
-              <span
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  width: '10px',
-                  height: '2px',
-                  backgroundColor: '#76838f',
-                  borderRadius: '10px',
-                }}
-              />
-            </div>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect y="4" width="20" height="2" rx="1" fill="#76838F"/>
+              <rect y="9" width="15" height="2" rx="1" fill="#76838F"/>
+              <rect y="14" width="10" height="2" rx="1" fill="#76838F"/>
+            </svg>
           </div>
 
           {/* Breadcrumb pill */}
@@ -97,8 +68,8 @@ export default function Navbar() {
               alignItems: 'center',
               paddingLeft: '9.8px',
               paddingRight: '12px',
-              gap: '0px',
-              minWidth: '226px',
+              overflow: 'hidden',
+              maxWidth: '100%',
             }}
           >
             {/* Home link */}

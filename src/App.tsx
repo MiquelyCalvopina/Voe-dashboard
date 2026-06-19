@@ -1,15 +1,11 @@
-import Sidebar from './components/Sidebar';
+import VerticalMainMenu from './components/VerticalMainMenu';
 import Navbar from './components/Navbar';
 import './index.css';
 
 export default function App() {
   return (
     <div style={{ display: 'flex', width: '100%', height: '100%' }}>
-      <Sidebar />
-      {/*
-        El sidebar es position:fixed (fuera del flujo normal).
-        paddingLeft compensa su ancho para que el contenido no quede debajo.
-      */}
+      <VerticalMainMenu />
       <div
         style={{
           paddingLeft: '60px',
@@ -25,6 +21,7 @@ export default function App() {
           style={{
             flex: 1,
             marginTop: '50px',
+            marginLeft: '6px',
             backgroundColor: '#ffffff',
             overflow: 'auto',
             minHeight: 0,

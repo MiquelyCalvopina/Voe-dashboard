@@ -72,13 +72,14 @@ export default function Navbar() {
               maxWidth: '100%',
             }}
           >
-            {/* Home link */}
+            {/* Home icon + label — contenedor exclusivo */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
                 cursor: 'pointer',
+                flexShrink: 0,
               }}
             >
               <HomeIcon />
@@ -91,20 +92,20 @@ export default function Navbar() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                {' '}Página de Inicio
+                Página de Inicio
               </span>
             </div>
 
-            {/* Separator */}
+            {/* Separator — 8px de distancia a cada lado */}
             <span
               style={{
-                fontFamily: 'Inter, sans-serif',
                 fontSize: '12px',
                 color: '#cccccc',
                 marginLeft: '8px',
                 marginRight: '8px',
                 lineHeight: '18.86px',
                 userSelect: 'none',
+                flexShrink: 0,
               }}
             >
               ›
@@ -120,7 +121,7 @@ export default function Navbar() {
                 whiteSpace: 'nowrap',
               }}
             >
-              {' '}De Estudios
+              Dashboard VOE
             </span>
           </div>
         </div>

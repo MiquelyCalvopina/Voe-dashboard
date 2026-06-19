@@ -501,9 +501,10 @@ function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
   const from = totalCount ? (page - 1) * COMMENTS_PER_PAGE + 1 : 0;
   const to = Math.min(page * COMMENTS_PER_PAGE, totalCount);
   return (
+    <div style={{ position: 'relative', minWidth: 0 }}>
     <motion.div
       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay }}
-      style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}
+      style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', minHeight: 0, minWidth: 0 }}
     >
       {/* Encabezado: conteo + paginación numerada */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
@@ -559,6 +560,7 @@ function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
         </div>
       </div>
     </motion.div>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import HomeIcon from './icons/HomeIcon';
+import avatarImg from '../assets/icons/avatar.png';
 
 export default function Navbar() {
   return (
@@ -148,12 +149,7 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           >
-            {/* Avatar placeholder - matches the Figma avatar */}
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="16" fill="#c8d2dc"/>
-              <circle cx="16" cy="13" r="5" fill="#8fa0b0"/>
-              <ellipse cx="16" cy="28" rx="9" ry="7" fill="#8fa0b0"/>
-            </svg>
+            <img src={avatarImg} alt="Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           {/* Dropdown caret */}
           <div

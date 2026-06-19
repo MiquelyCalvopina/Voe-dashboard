@@ -15865,7 +15865,7 @@
   "period": {
    "current": "Junio 2024",
    "previous": "Mayo 2024",
-   "previousSimulated": true
+   "previousSimulated": false
   }
  },
  "filterOptions": {

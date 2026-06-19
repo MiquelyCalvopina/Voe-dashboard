@@ -410,7 +410,7 @@ export default function Dashboard() {
       {/* ═══ SECCIÓN: VOZ DEL COLABORADOR ═══ */}
       <section>
         <SectionHeader title="Voz del Colaborador" subtitle="Qué dicen los colaboradores activos en sus comentarios" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'stretch' }}>
 
           {/* Columna izquierda: Top 5 listas */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
@@ -425,39 +425,13 @@ export default function Dashboard() {
           </div>
 
           {/* Columna derecha: Comentarios */}
-          <Card delay={0.1} style={{ minHeight: 500 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <span style={{ fontSize: 11, color: C.muted }}>
-                {(commentPage - 1) * COMMENTS_PER_PAGE + 1}–{Math.min(commentPage * COMMENTS_PER_PAGE, cmts.length)} de {cmts.length} comentarios
-              </span>
-              <Pagination
-                current={commentPage}
-                total={cmts.length}
-                pageSize={COMMENTS_PER_PAGE}
-                onChange={setCommentPage}
-                size="small"
-                simple
-              />
-            </div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: C.ink, paddingBottom: 8, borderBottom: '1px solid #f0f0f0', marginBottom: 8 }}>
-              Comentario
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <AnimatePresence mode="wait">
-                {pagedComments.map((c, i) => (
-                  <motion.div key={`${commentPage}-${i}`}
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    transition={{ delay: i * 0.008 }}
-                    style={{ padding: '10px 0', borderBottom: '1px solid #f5f5f5', fontSize: 12, color: '#595959', lineHeight: 1.55 }}>
-                    {c.comment}
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-              {cmts.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
-              )}
-            </div>
-          </Card>
+          <CommentTable
+            comments={pagedComments.map(c => c.comment)}
+            totalCount={cmts.length}
+            page={commentPage}
+            onPage={setCommentPage}
+            delay={0.1}
+          />
         </div>
       </section>
 
@@ -465,7 +439,7 @@ export default function Dashboard() {
       {exStats.total > 0 && (
         <section>
           <SectionHeader title="Ex Colaboradores · Proceso de Salida" subtitle="Qué se llevaron al salir y qué pudo evitar su desvinculación" />
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'stretch' }}>
 
             {/* Columna izquierda: Satisfacción + ¿Cómo evitar? */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
@@ -486,39 +460,13 @@ export default function Dashboard() {
             </div>
 
             {/* Columna derecha: Comentarios de salida */}
-            <Card delay={0.1} style={{ minHeight: 400 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <span style={{ fontSize: 11, color: C.muted }}>
-                  {(exitCommentPage - 1) * COMMENTS_PER_PAGE + 1}–{Math.min(exitCommentPage * COMMENTS_PER_PAGE, exCmts.length)} de {exCmts.length} comentarios
-                </span>
-                <Pagination
-                  current={exitCommentPage}
-                  total={exCmts.length}
-                  pageSize={COMMENTS_PER_PAGE}
-                  onChange={setExitCommentPage}
-                  size="small"
-                  simple
-                />
-              </div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: C.ink, paddingBottom: 8, borderBottom: '1px solid #f0f0f0', marginBottom: 8 }}>
-                Comentario
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <AnimatePresence mode="wait">
-                  {pagedExitComments.map((c, i) => (
-                    <motion.div key={`${exitCommentPage}-${i}`}
-                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      transition={{ delay: i * 0.008 }}
-                      style={{ padding: '10px 0', borderBottom: '1px solid #f5f5f5', fontSize: 12, color: '#595959', lineHeight: 1.55 }}>
-                      {c.comment}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-                {exCmts.length === 0 && (
-                  <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
-                )}
-              </div>
-            </Card>
+            <CommentTable
+              comments={pagedExitComments.map(c => c.comment)}
+              totalCount={exCmts.length}
+              page={exitCommentPage}
+              onPage={setExitCommentPage}
+              delay={0.1}
+            />
           </div>
         </section>
       )}
@@ -528,6 +476,78 @@ export default function Dashboard() {
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
+function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
+  comments: string[];
+  totalCount: number;
+  page: number;
+  onPage: (p: number) => void;
+  delay?: number;
+}) {
+  const from = totalCount ? (page - 1) * COMMENTS_PER_PAGE + 1 : 0;
+  const to = Math.min(page * COMMENTS_PER_PAGE, totalCount);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay }}
+      style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}
+    >
+      {/* Encabezado: conteo + paginación numerada */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <span style={{ fontSize: 12, color: C.muted }}>
+          {from}–{to} de {totalCount.toLocaleString('es')} comentarios
+        </span>
+        <Pagination
+          current={page}
+          total={totalCount}
+          pageSize={COMMENTS_PER_PAGE}
+          onChange={onPage}
+          size="small"
+          showSizeChanger={false}
+        />
+      </div>
+
+      {/* Tabla con scroll interno */}
+      <div style={{
+        flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
+        border: '1px solid #e8e8e8', borderRadius: 8, overflow: 'hidden', background: '#fff',
+      }}>
+        {/* Cabecera */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          padding: '11px 16px', background: '#fafafa', borderBottom: '1px solid #e8e8e8',
+          fontSize: 12.5, fontWeight: 600, color: C.ink, flexShrink: 0,
+        }}>
+          Comentario
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M5 6.5L7.5 3.5L10 6.5" stroke="#bfbfbf" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M5 9.5L7.5 12.5L10 9.5" stroke="#bfbfbf" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        {/* Cuerpo scrolleable */}
+        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+          {comments.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
+          ) : (
+            <AnimatePresence mode="wait">
+              {comments.map((c, i) => (
+                <motion.div key={`${page}-${i}`}
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  transition={{ delay: i * 0.006 }}
+                  style={{
+                    padding: '11px 16px', borderBottom: i < comments.length - 1 ? '1px solid #f0f0f0' : 'none',
+                    fontSize: 12, color: '#595959', lineHeight: 1.5,
+                  }}>
+                  {c}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+
 function FactorList({ items, color, bg, dim, valueScale }: { items: { label: string; score: number }[]; color: string; bg: string; dim?: boolean; valueScale?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>

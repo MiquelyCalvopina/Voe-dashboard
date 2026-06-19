@@ -259,7 +259,7 @@ export default function Dashboard() {
       <div style={{ padding: `${GAP}px ${GAP}px 40px`, display: 'flex', flexDirection: 'column', gap: GAP }}>
 
       {/* ═══ KPI ROW ═══ */}
-      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP, alignItems: 'start' }}>
 
         {/* Total participantes */}
         <Card delay={0}>
@@ -323,7 +323,7 @@ export default function Dashboard() {
         {/* eNPS por Antigüedad */}
         <Card delay={0.12}>
           <CardTitle title="eNPS por Antigüedad" sub="Click en una barra para filtrar el reporte" />
-          <ResponsiveContainer width="100%" height={175}>
+          <ResponsiveContainer width="100%" height={150}>
             <ComposedChart data={byType} margin={{ top: 20, right: 40, left: -24, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />

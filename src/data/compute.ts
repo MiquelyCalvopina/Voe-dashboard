@@ -39,10 +39,11 @@ export type Filters = {
   generacion: string[];
   tema: string[];
   sentimiento: string[];
+  exit_tema: string[];
 };
 
 export const EMPTY_FILTERS: Filters = {
-  source: [], area: [], ciudad: [], nivel: [], antiguedad: [], genero: [], generacion: [], tema: [], sentimiento: [],
+  source: [], area: [], ciudad: [], nivel: [], antiguedad: [], genero: [], generacion: [], tema: [], sentimiento: [], exit_tema: [],
 };
 
 export function applyFilters(records: Record[], f: Filters): Record[] {
@@ -56,6 +57,7 @@ export function applyFilters(records: Record[], f: Filters): Record[] {
     if (f.generacion.length && (!r.generacion || !f.generacion.includes(r.generacion))) return false;
     if (f.tema.length && (!r.tema || !f.tema.includes(r.tema))) return false;
     if (f.sentimiento.length && (!r.sentimiento || !f.sentimiento.includes(r.sentimiento))) return false;
+    if (f.exit_tema.length && (!r.exit_tema || !f.exit_tema.includes(r.exit_tema))) return false;
     return true;
   });
 }

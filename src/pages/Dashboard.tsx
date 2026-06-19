@@ -526,7 +526,7 @@ export default function Dashboard() {
               <FactorList items={[...exFactors].sort((a, b) => b.score - a.score)} color={C.pink} bg="#fff0f6" valueScale />
             </Card>
             <Card delay={0.1}>
-              <CardTitle title="¿Cómo evitar la desvinculación?" sub="Temas en respuestas abiertas" />
+              <CardTitle title="¿Cómo evitar la desvinculación?" sub="Temas en respuestas abiertas · click para filtrar" />
               {exThemes.length > 0 ? (
                 <ResponsiveContainer width="100%" height={190}>
                   <BarChart data={exThemes} margin={{ top: 14, right: 16, left: -22, bottom: 0 }}>
@@ -534,9 +534,13 @@ export default function Dashboard() {
                     <XAxis dataKey="tema" tick={{ fontSize: 10, fill: '#595959' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
                     <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                    <Bar dataKey="count" name="Menciones" radius={[6, 6, 0, 0]} maxBarSize={44} activeBar={false}
+                    <Bar dataKey="count" name="Menciones" radius={[6, 6, 0, 0]} maxBarSize={44} cursor="pointer" activeBar={false}
+                      onClick={(d: any) => toggleFilter('exit_tema', d.tema)}
                       label={{ position: 'top', fontSize: 10, fill: '#8c8c8c' }}>
-                      {exThemes.map((_, i) => <Cell key={i} fill={`hsl(${330 + i * 28}, 64%, ${58 + i * 4}%)`} />)}
+                      {exThemes.map((t, i) => (
+                        <Cell key={i} fill={`hsl(${330 + i * 28}, 64%, ${58 + i * 4}%)`}
+                          opacity={filters.exit_tema.length && !filters.exit_tema.includes(t.tema) ? 0.4 : 1} />
+                      ))}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>

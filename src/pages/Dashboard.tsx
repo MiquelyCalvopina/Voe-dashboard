@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, PieChart, Pie,
-  LineChart, ComposedChart, Line,
+  ComposedChart, Line, AreaChart, Area,
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Button, Pagination } from 'antd';
@@ -99,6 +99,10 @@ const SOURCE_TO_ANT: Record<string, string> = {
 
 const COMMENTS_PER_PAGE = 25;
 
+// Orden lógico del ciclo de vida: menos de 6 meses → más de 6 meses → ex colaboradores
+const SOURCE_ORDER = ['0-6 Meses', '+6 Meses', 'Ex Colaboradores'];
+const sourceRank = (s: string) => { const i = SOURCE_ORDER.indexOf(s); return i === -1 ? 99 : i; };
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -110,7 +114,7 @@ export default function Dashboard() {
 
   const stats = useMemo(() => enpsStats(records), [records]);
   const byType = useMemo(() =>
-    FILTER_OPTIONS.source.map(src => {
+    [...FILTER_OPTIONS.source].sort((a, b) => sourceRank(a) - sourceRank(b)).map(src => {
       const s = enpsStats(records.filter(r => r.source === src));
       return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
     }).filter(d => d.total > 0)
@@ -283,16 +287,16 @@ export default function Dashboard() {
           <div style={{ display: 'flex', gap: 6, fontSize: 10.5, color: C.muted, marginBottom: 14 }}>
             <span>Crítico: -100 a 0</span><span>·</span><span>Regular: 1 a 30</span><span>·</span><span>Bueno: 31 a 75</span><span>·</span><span>Excelente: 76+</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ fontSize: 48, fontWeight: 800, color: C.ink, lineHeight: 1 }}>
-                {stats.enps}<span style={{ fontSize: 20, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
+              <div style={{ fontSize: 44, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12 }}>
+                {stats.enps}<span style={{ fontSize: 18, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 14 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                 {donutData.map(d => (
-                  <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 11.5 }}>
+                  <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5 }}>
                     <span style={{ width: 8, height: 8, borderRadius: '50%', background: d.color, flexShrink: 0, display: 'inline-block' }} />
-                    <span style={{ color: C.muted, width: 88 }}>{d.name}</span>
+                    <span style={{ color: C.muted, width: 82 }}>{d.name}</span>
                     <span style={{ fontWeight: 700, color: d.color }}>
                       {stats.total ? Math.round((d.value / stats.total) * 1000) / 10 : 0}%
                     </span>
@@ -301,11 +305,11 @@ export default function Dashboard() {
                 ))}
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: 0, height: 170 }}>
+            <div style={{ flex: 1, minWidth: 0, height: 114, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie data={donutData} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                    innerRadius={62} outerRadius={74} paddingAngle={2} cornerRadius={3}
+                    innerRadius={38} outerRadius={50} paddingAngle={2} cornerRadius={3}
                     startAngle={90} endAngle={-270}>
                     {donutData.map((d, i) => <Cell key={i} fill={d.color} stroke="none" />)}
                   </Pie>
@@ -356,11 +360,17 @@ export default function Dashboard() {
       <section>
         <SectionHeader title="El Viaje del Colaborador" subtitle="Nivel de satisfacción en cada etapa del ciclo de vida (0 a 100%)" />
         <Card delay={0} pad={20}>
-          <div style={{ height: 110 }}>
+          <div style={{ height: 96 }}>
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={journey} margin={{ top: 24, right: 16, left: 16, bottom: 0 }}>
+              <AreaChart data={journey} margin={{ top: 26, right: 24, left: 24, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="journeyFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={C.primary} stopOpacity={0.16} />
+                    <stop offset="100%" stopColor={C.primary} stopOpacity={0} />
+                  </linearGradient>
+                </defs>
                 <XAxis dataKey="label" tick={false} axisLine={false} tickLine={false} height={0} />
-                <YAxis domain={[60, 90]} hide />
+                <YAxis domain={[55, 92]} hide />
                 <Tooltip content={({ active, payload }: any) => {
                   if (!active || !payload?.length) return null;
                   const d = payload[0].payload;
@@ -371,11 +381,12 @@ export default function Dashboard() {
                     </div>
                   );
                 }} />
-                <Line type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2}
-                  dot={{ r: 4, fill: '#fff', stroke: C.primary, strokeWidth: 2 }}
+                <Area type="monotone" dataKey="satisfaction" stroke={C.primary} strokeWidth={2.5}
+                  fill="url(#journeyFill)"
+                  dot={{ r: 4.5, fill: '#fff', stroke: C.primary, strokeWidth: 2 }}
                   activeDot={{ r: 6, fill: C.primary }}
-                  label={{ position: 'top', fontSize: 11, fontWeight: 700, fill: C.primary, formatter: (v: any) => `${v}%` }} />
-              </LineChart>
+                  label={{ position: 'top', fontSize: 11.5, fontWeight: 700, fill: C.ink, formatter: (v: any) => `${v}%` }} />
+              </AreaChart>
             </ResponsiveContainer>
           </div>
 
@@ -383,12 +394,16 @@ export default function Dashboard() {
             {journey.map((j, i) => (
               <motion.div key={j.key}
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.06 + i * 0.06 }}
-                style={{ padding: '14px 12px', borderRight: i < journey.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-                  <span style={{ fontSize: 14 }}>{j.icon}</span>
-                  <div style={{ fontSize: 10.5, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
+                style={{ padding: '16px 14px', position: 'relative' }}>
+                {/* Chevron separador entre columnas */}
+                {i < journey.length - 1 && (
+                  <span style={{ position: 'absolute', top: 64, right: -7, color: '#d9d9d9', fontSize: 16, lineHeight: 1, zIndex: 1 }}>›</span>
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, marginBottom: 8 }}>
+                  <span style={{ width: 24, height: 24, borderRadius: 7, background: j.color + '1f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{j.icon}</span>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: C.ink, lineHeight: 1.2 }}>{j.label}</div>
                 </div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 10 }}>{j.satisfaction}%</div>
+                <div style={{ fontSize: 30, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12, textAlign: 'center' }}>{j.satisfaction}%</div>
                 {j.best && (
                   <div style={{ marginBottom: 8 }}>
                     <div style={{ fontSize: 9.5, color: C.promoter, fontWeight: 700, marginBottom: 2 }}>▲ Fortaleza</div>
@@ -410,7 +425,7 @@ export default function Dashboard() {
       {/* ═══ SECCIÓN: VOZ DEL COLABORADOR ═══ */}
       <section>
         <SectionHeader title="Voz del Colaborador" subtitle="Qué dicen los colaboradores activos en sus comentarios" />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'stretch' }}>
 
           {/* Columna izquierda: Top 5 listas */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
@@ -425,39 +440,13 @@ export default function Dashboard() {
           </div>
 
           {/* Columna derecha: Comentarios */}
-          <Card delay={0.1} style={{ minHeight: 500 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <span style={{ fontSize: 11, color: C.muted }}>
-                {(commentPage - 1) * COMMENTS_PER_PAGE + 1}–{Math.min(commentPage * COMMENTS_PER_PAGE, cmts.length)} de {cmts.length} comentarios
-              </span>
-              <Pagination
-                current={commentPage}
-                total={cmts.length}
-                pageSize={COMMENTS_PER_PAGE}
-                onChange={setCommentPage}
-                size="small"
-                simple
-              />
-            </div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: C.ink, paddingBottom: 8, borderBottom: '1px solid #f0f0f0', marginBottom: 8 }}>
-              Comentario
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <AnimatePresence mode="wait">
-                {pagedComments.map((c, i) => (
-                  <motion.div key={`${commentPage}-${i}`}
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    transition={{ delay: i * 0.008 }}
-                    style={{ padding: '10px 0', borderBottom: '1px solid #f5f5f5', fontSize: 12, color: '#595959', lineHeight: 1.55 }}>
-                    {c.comment}
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-              {cmts.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
-              )}
-            </div>
-          </Card>
+          <CommentTable
+            comments={pagedComments.map(c => c.comment)}
+            totalCount={cmts.length}
+            page={commentPage}
+            onPage={setCommentPage}
+            delay={0.1}
+          />
         </div>
       </section>
 
@@ -465,7 +454,7 @@ export default function Dashboard() {
       {exStats.total > 0 && (
         <section>
           <SectionHeader title="Ex Colaboradores · Proceso de Salida" subtitle="Qué se llevaron al salir y qué pudo evitar su desvinculación" />
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'stretch' }}>
 
             {/* Columna izquierda: Satisfacción + ¿Cómo evitar? */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: GAP }}>
@@ -479,46 +468,20 @@ export default function Dashboard() {
                   <RankedBars
                     items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
                     total={exCmts.length}
-                    demoteLast={['Otros']}
+                    demoteLast={['Ninguna', 'Otros']}
                   />
                 </Card>
               )}
             </div>
 
             {/* Columna derecha: Comentarios de salida */}
-            <Card delay={0.1} style={{ minHeight: 400 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                <span style={{ fontSize: 11, color: C.muted }}>
-                  {(exitCommentPage - 1) * COMMENTS_PER_PAGE + 1}–{Math.min(exitCommentPage * COMMENTS_PER_PAGE, exCmts.length)} de {exCmts.length} comentarios
-                </span>
-                <Pagination
-                  current={exitCommentPage}
-                  total={exCmts.length}
-                  pageSize={COMMENTS_PER_PAGE}
-                  onChange={setExitCommentPage}
-                  size="small"
-                  simple
-                />
-              </div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: C.ink, paddingBottom: 8, borderBottom: '1px solid #f0f0f0', marginBottom: 8 }}>
-                Comentario
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <AnimatePresence mode="wait">
-                  {pagedExitComments.map((c, i) => (
-                    <motion.div key={`${exitCommentPage}-${i}`}
-                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                      transition={{ delay: i * 0.008 }}
-                      style={{ padding: '10px 0', borderBottom: '1px solid #f5f5f5', fontSize: 12, color: '#595959', lineHeight: 1.55 }}>
-                      {c.comment}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-                {exCmts.length === 0 && (
-                  <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
-                )}
-              </div>
-            </Card>
+            <CommentTable
+              comments={pagedExitComments.map(c => c.comment)}
+              totalCount={exCmts.length}
+              page={exitCommentPage}
+              onPage={setExitCommentPage}
+              delay={0.1}
+            />
           </div>
         </section>
       )}
@@ -528,6 +491,78 @@ export default function Dashboard() {
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
+function CommentTable({ comments, totalCount, page, onPage, delay = 0 }: {
+  comments: string[];
+  totalCount: number;
+  page: number;
+  onPage: (p: number) => void;
+  delay?: number;
+}) {
+  const from = totalCount ? (page - 1) * COMMENTS_PER_PAGE + 1 : 0;
+  const to = Math.min(page * COMMENTS_PER_PAGE, totalCount);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay }}
+      style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}
+    >
+      {/* Encabezado: conteo + paginación numerada */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <span style={{ fontSize: 12, color: C.muted }}>
+          {from}–{to} de {totalCount.toLocaleString('es')} comentarios
+        </span>
+        <Pagination
+          current={page}
+          total={totalCount}
+          pageSize={COMMENTS_PER_PAGE}
+          onChange={onPage}
+          size="small"
+          showSizeChanger={false}
+        />
+      </div>
+
+      {/* Tabla con scroll interno */}
+      <div style={{
+        flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
+        border: '1px solid #e8e8e8', borderRadius: 8, overflow: 'hidden', background: '#fff',
+      }}>
+        {/* Cabecera */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          padding: '11px 16px', background: '#fafafa', borderBottom: '1px solid #e8e8e8',
+          fontSize: 12.5, fontWeight: 600, color: C.ink, flexShrink: 0,
+        }}>
+          Comentario
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+            <path d="M5 6.5L7.5 3.5L10 6.5" stroke="#bfbfbf" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M5 9.5L7.5 12.5L10 9.5" stroke="#bfbfbf" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        {/* Cuerpo scrolleable */}
+        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+          {comments.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '32px 0', color: '#bfbfbf', fontSize: 12 }}>Sin comentarios</div>
+          ) : (
+            <AnimatePresence mode="wait">
+              {comments.map((c, i) => (
+                <motion.div key={`${page}-${i}`}
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  transition={{ delay: i * 0.006 }}
+                  style={{
+                    padding: '11px 16px', borderBottom: i < comments.length - 1 ? '1px solid #f0f0f0' : 'none',
+                    fontSize: 12, color: '#595959', lineHeight: 1.5,
+                  }}>
+                  {c}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+
 function FactorList({ items, color, bg, dim, valueScale }: { items: { label: string; score: number }[]; color: string; bg: string; dim?: boolean; valueScale?: boolean }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>

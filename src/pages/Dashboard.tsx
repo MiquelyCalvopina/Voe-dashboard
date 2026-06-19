@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, Legend, PieChart, Pie,
-  AreaChart, Area, ReferenceLine,
+  AreaChart, Area, ReferenceLine, ComposedChart, Line,
 } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Select, Tag, Input, Button } from 'antd';
@@ -305,22 +305,36 @@ export default function Dashboard() {
 
           {/* eNPS por tipo */}
           <Card delay={0.16}>
-            <CardTitle title="eNPS por Antigüedad" sub="Índice de recomendación (−100 a +100) de cada grupo · clic en una barra para filtrar" />
-            <ResponsiveContainer width="100%" height={150}>
-              <BarChart data={byType} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
+            <CardTitle title="eNPS por Antigüedad" sub="Distribución Promotores / Neutros / Detractores (%) y línea de eNPS por grupo · clic para filtrar" />
+            <ResponsiveContainer width="100%" height={180}>
+              <ComposedChart data={byType} margin={{ top: 14, right: 44, left: -22, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
                 <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                <YAxis yAxisId="left" domain={[0, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+                <YAxis yAxisId="right" orientation="right" domain={[-100, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
                 <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
-                <Bar dataKey="enps" name="eNPS" radius={[7, 7, 0, 0]} maxBarSize={56} cursor="pointer"
-                  activeBar={false} onClick={(d: any) => toggleFilter('source', d.type)}
-                  label={{ position: 'top', fontSize: 12, fontWeight: 800, fill: C.ink }}>
+                <Bar yAxisId="left" dataKey="pct_promoters" name="Promotores %" stackId="dist" fill={C.promoter} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('source', d.type)}>
                   {byType.map((d, i) => (
-                    <Cell key={i} fill={filters.source.includes(d.type) ? C.primary : enpsStatus(d.enps).color}
-                      opacity={filters.source.length && !filters.source.includes(d.type) ? 0.4 : 1} />
+                    <Cell key={i} fill={C.promoter} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
                   ))}
                 </Bar>
-              </BarChart>
+                <Bar yAxisId="left" dataKey="pct_neutrals" name="Neutros %" stackId="dist" fill={C.neutral} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('source', d.type)}>
+                  {byType.map((d, i) => (
+                    <Cell key={i} fill={C.neutral} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
+                  ))}
+                </Bar>
+                <Bar yAxisId="left" dataKey="pct_detractors" name="Detractores %" stackId="dist" fill={C.detractor} maxBarSize={56} cursor="pointer"
+                  onClick={(d: any) => toggleFilter('source', d.type)}>
+                  {byType.map((d, i) => (
+                    <Cell key={i} fill={C.detractor} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
+                  ))}
+                </Bar>
+                <Line yAxisId="right" type="monotone" dataKey="enps" name="eNPS" stroke={C.primary} strokeWidth={2.5}
+                  dot={{ fill: C.primary, r: 4, strokeWidth: 0 }}
+                  label={{ position: 'top', fontSize: 11, fontWeight: 800, fill: C.primary, formatter: (v: any) => v }} />
+              </ComposedChart>
             </ResponsiveContainer>
           </Card>
         </div>

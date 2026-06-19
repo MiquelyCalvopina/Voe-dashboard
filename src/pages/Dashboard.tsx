@@ -99,6 +99,15 @@ const STAGES = [
   { key: 'Salida', label: 'Permanencia & Salida', icon: '🔄', color: C.pink, sources: ['Ex Colaboradores'] },
 ] as const;
 
+// source (origen de la encuesta) ↔ antiguedad son 1:1 en los datos.
+// El dropdown visible filtra por `antiguedad`, así que el clic en las barras
+// de eNPS debe usar la MISMA clave para no crear intersecciones vacías.
+const SOURCE_TO_ANT: Record<string, string> = {
+  '0-6 Meses': 'Menos de 6 meses',
+  '+6 Meses': 'Mas de 6 meses',
+  'Ex Colaboradores': 'Ex colaborador',
+};
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -110,7 +119,7 @@ export default function Dashboard() {
   const byType = useMemo(() =>
     FILTER_OPTIONS.source.map(src => {
       const s = enpsStats(records.filter(r => r.source === src));
-      return { type: src, label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
+      return { type: src, ant: SOURCE_TO_ANT[src], label: src === 'Ex Colaboradores' ? 'Ex Colab.' : src, ...s };
     }).filter(d => d.total > 0)
   , [records]);
   // Voz del Colaborador: SOLO encuestas de experiencia (0-6m + +6m), nunca ex colaboradores
@@ -149,15 +158,15 @@ export default function Dashboard() {
 
   // Promoters vs detractors by theme
   const themesComparison = useMemo(() => {
-    const promoTh = themeCounts(records.filter(r => r.cat === 'Promotor'));
-    const detrTh = themeCounts(records.filter(r => r.cat === 'Detractor'));
+    const promoTh = themeCounts(expRecords.filter(r => r.cat === 'Promotor'));
+    const detrTh = themeCounts(expRecords.filter(r => r.cat === 'Detractor'));
     const names = [...new Set([...promoTh.map(t => t.tema), ...detrTh.map(t => t.tema)])];
     return names.map(tema => ({
       tema,
       Promotores: promoTh.find(t => t.tema === tema)?.count || 0,
       Detractores: detrTh.find(t => t.tema === tema)?.count || 0,
     })).sort((a, b) => (b.Promotores + b.Detractores) - (a.Promotores + a.Detractores));
-  }, [records]);
+  }, [expRecords]);
 
   const exStats = useMemo(() => enpsStats(records.filter(r => r.source === 'Ex Colaboradores')), [records]);
   const exFactors = allFactors.filter(f => f.stage === 'Salida');
@@ -314,21 +323,21 @@ export default function Dashboard() {
                 <YAxis yAxisId="right" orientation="right" domain={[-100, 100]} tick={{ fontSize: 9, fill: '#bfbfbf' }} axisLine={false} tickLine={false} />
                 <Tooltip content={<ChartTip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
                 <Bar yAxisId="left" dataKey="pct_promoters" name="Promotores %" stackId="dist" fill={C.promoter} maxBarSize={56} cursor="pointer"
-                  onClick={(d: any) => toggleFilter('source', d.type)}>
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
                   {byType.map((d, i) => (
-                    <Cell key={i} fill={C.promoter} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
+                    <Cell key={i} fill={C.promoter} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
                   ))}
                 </Bar>
                 <Bar yAxisId="left" dataKey="pct_neutrals" name="Neutros %" stackId="dist" fill={C.neutral} maxBarSize={56} cursor="pointer"
-                  onClick={(d: any) => toggleFilter('source', d.type)}>
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
                   {byType.map((d, i) => (
-                    <Cell key={i} fill={C.neutral} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
+                    <Cell key={i} fill={C.neutral} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
                   ))}
                 </Bar>
                 <Bar yAxisId="left" dataKey="pct_detractors" name="Detractores %" stackId="dist" fill={C.detractor} maxBarSize={56} cursor="pointer"
-                  onClick={(d: any) => toggleFilter('source', d.type)}>
+                  onClick={(d: any) => toggleFilter('antiguedad', d.ant)}>
                   {byType.map((d, i) => (
-                    <Cell key={i} fill={C.detractor} opacity={filters.source.length && !filters.source.includes(d.type) ? 0.35 : 1} />
+                    <Cell key={i} fill={C.detractor} opacity={filters.antiguedad.length && !filters.antiguedad.includes(d.ant) ? 0.35 : 1} />
                   ))}
                 </Bar>
                 <Line yAxisId="right" type="monotone" dataKey="enps" name="eNPS" stroke={C.primary} strokeWidth={2.5}
@@ -436,7 +445,7 @@ export default function Dashboard() {
           <Card delay={0.1}>
             <CardTitle title="Satisfacción por Atributo" sub="Qué tan satisfechos están con cada atributo (1 a 5). Verde = alta, rojo = baja." />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5, maxHeight: 190, overflowY: 'auto' }}>
-              {[...allFactors].sort((a, b) => b.score - a.score).slice(0, 12).map((f, i) => {
+              {allFactors.filter(f => f.stage !== 'Salida').sort((a, b) => b.score - a.score).slice(0, 12).map((f, i) => {
                 const t = Math.min(1, Math.max(0, (f.score - 3.4) / 1.6));
                 const r = Math.round(255 - t * 173), g = Math.round(77 + t * 119), b = Math.round(79 - t * 53);
                 return (

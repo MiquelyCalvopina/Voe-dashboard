@@ -22,6 +22,7 @@ export default function App() {
             flex: 1,
             marginTop: '50px',
             marginLeft: '6px',
+            marginRight: '14px',
             backgroundColor: '#ffffff',
             overflow: 'auto',
             minHeight: 0,

@@ -120,8 +120,14 @@ export default function Dashboard() {
   const genderDemo = useMemo(() => demographic(records, 'genero'), [records]);
   const areaDemo = useMemo(() => demographic(records, 'area'), [records]);
 
-  const top5 = [...allFactors].sort((a, b) => b.score - a.score).slice(0, 5);
-  const bottom5 = [...allFactors].sort((a, b) => a.score - b.score).slice(0, 5);
+  // Drivers reales: solo factores con muestra confiable (nD≥5 y nP≥5)
+  // Fortalezas = promedio ≥ mediana, ordenados por brecha P−D desc
+  // Áreas a mejorar = promedio < mediana, ordenados por brecha P−D desc
+  const reliableFactors = allFactors.filter(f => f.gap !== null);
+  const scores = reliableFactors.map(f => f.score).sort((a, b) => a - b);
+  const median = scores.length ? scores[Math.floor(scores.length / 2)] : 3.75;
+  const top5 = reliableFactors.filter(f => f.score >= median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
+  const bottom5 = reliableFactors.filter(f => f.score < median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
 
   // Journey: avg satisfaction (1-5 → %) per stage
   const journey = useMemo(() => STAGES.map(stage => {
@@ -429,11 +435,11 @@ export default function Dashboard() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP }}>
           <Card delay={0.15}>
-            <CardTitle title="Top 5 Fortalezas" sub="Factores mejor evaluados" />
+            <CardTitle title="Top 5 Fortalezas" sub="Bien evaluados · mayor brecha Promotor−Detractor" />
             <FactorList items={top5} color={C.promoter} bg="#f6ffed" />
           </Card>
           <Card delay={0.2}>
-            <CardTitle title="Top 5 Áreas a Mejorar" sub="Factores con menor evaluación" />
+            <CardTitle title="Top 5 Áreas a Mejorar" sub="Bajo promedio · mayor impacto en detractores" />
             <FactorList items={bottom5} color={C.detractor} bg="#fff1f0" dim />
           </Card>
         </div>

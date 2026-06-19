@@ -283,16 +283,16 @@ export default function Dashboard() {
           <div style={{ display: 'flex', gap: 6, fontSize: 10.5, color: C.muted, marginBottom: 14 }}>
             <span>Crítico: -100 a 0</span><span>·</span><span>Regular: 1 a 30</span><span>·</span><span>Bueno: 31 a 75</span><span>·</span><span>Excelente: 76+</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ fontSize: 48, fontWeight: 800, color: C.ink, lineHeight: 1 }}>
-                {stats.enps}<span style={{ fontSize: 20, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
+              <div style={{ fontSize: 44, fontWeight: 800, color: C.ink, lineHeight: 1, marginBottom: 12 }}>
+                {stats.enps}<span style={{ fontSize: 18, color: '#d9d9d9', fontWeight: 400 }}>/100</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 14 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                 {donutData.map(d => (
-                  <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 11.5 }}>
+                  <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5 }}>
                     <span style={{ width: 8, height: 8, borderRadius: '50%', background: d.color, flexShrink: 0, display: 'inline-block' }} />
-                    <span style={{ color: C.muted, width: 88 }}>{d.name}</span>
+                    <span style={{ color: C.muted, width: 82 }}>{d.name}</span>
                     <span style={{ fontWeight: 700, color: d.color }}>
                       {stats.total ? Math.round((d.value / stats.total) * 1000) / 10 : 0}%
                     </span>
@@ -301,11 +301,11 @@ export default function Dashboard() {
                 ))}
               </div>
             </div>
-            <div style={{ flex: 1, minWidth: 0, height: 170 }}>
+            <div style={{ flex: 1, minWidth: 0, height: 114, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie data={donutData} dataKey="value" nameKey="name" cx="50%" cy="50%"
-                    innerRadius={62} outerRadius={74} paddingAngle={2} cornerRadius={3}
+                    innerRadius={38} outerRadius={50} paddingAngle={2} cornerRadius={3}
                     startAngle={90} endAngle={-270}>
                     {donutData.map((d, i) => <Cell key={i} fill={d.color} stroke="none" />)}
                   </Pie>

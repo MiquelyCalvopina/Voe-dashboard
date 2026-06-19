@@ -1,7 +1,11 @@
 import HomeIcon from './icons/HomeIcon';
 import avatarImg from '../assets/icons/avatar.png';
 
-export default function Navbar() {
+interface NavbarProps {
+  currentPage?: string;
+}
+
+export default function Navbar({ currentPage = 'Dashboard VOE' }: NavbarProps) {
   return (
     <div
       style={{
@@ -123,7 +127,7 @@ export default function Navbar() {
                 whiteSpace: 'nowrap',
               }}
             >
-              Dashboard VOE
+              {currentPage}
             </span>
           </div>
         </div>

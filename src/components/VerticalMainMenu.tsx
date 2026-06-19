@@ -7,17 +7,23 @@ import {
   WalletNavIcon,
   ToolsNavIcon,
 } from './icons/NavIcons';
+import type { PageId } from '../App';
 
-const navItems = [
-  { icon: <HomeNavIcon />, label: 'Inicio' },
-  { icon: <BuildingNavIcon />, label: 'Estudios' },
-  { icon: <PlayNavIcon />, label: 'Media' },
-  { icon: <ArchiveNavIcon />, label: 'Archivo' },
-  { icon: <WalletNavIcon />, label: 'Cartera' },
-  { icon: <ToolsNavIcon />, label: 'Herramientas' },
+const navItems: { icon: React.ReactNode; label: string; page: PageId }[] = [
+  { icon: <HomeNavIcon />, label: 'Resumen Ejecutivo', page: 'resumen' },
+  { icon: <BuildingNavIcon />, label: 'Ciclo de Vida', page: 'ciclo' },
+  { icon: <PlayNavIcon />, label: 'Drivers de Satisfacción', page: 'drivers' },
+  { icon: <ArchiveNavIcon />, label: 'Voz del Colaborador', page: 'voz' },
+  { icon: <WalletNavIcon />, label: 'Ex Colaboradores', page: 'ex' },
+  { icon: <ToolsNavIcon />, label: 'Benchmark Interno', page: 'benchmark' },
 ];
 
-export default function Sidebar() {
+interface Props {
+  activePage: PageId;
+  onNavigate: (page: PageId) => void;
+}
+
+export default function Sidebar({ activePage, onNavigate }: Props) {
   return (
     <div
       style={{
@@ -30,6 +36,7 @@ export default function Sidebar() {
         display: 'flex',
         flexDirection: 'column',
         zIndex: 100,
+        borderRight: '1px solid #f0f0f0',
       }}
     >
       <div
@@ -53,10 +60,11 @@ export default function Sidebar() {
           alignItems: 'center',
         }}
       >
-        {navItems.map((item, i) => (
+        {navItems.map((item) => (
           <div
-            key={i}
+            key={item.page}
             title={item.label}
+            onClick={() => onNavigate(item.page)}
             style={{
               width: '60px',
               height: '40px',
@@ -64,6 +72,9 @@ export default function Sidebar() {
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
+              backgroundColor: activePage === item.page ? '#e6f4ff' : 'transparent',
+              borderRight: activePage === item.page ? '2px solid #1677ff' : '2px solid transparent',
+              transition: 'all 0.15s ease',
             }}
           >
             {item.icon}

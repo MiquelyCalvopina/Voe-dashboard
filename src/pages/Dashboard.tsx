@@ -104,6 +104,7 @@ export default function Dashboard() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [commentPage, setCommentPage] = useState(1);
   const [exitCommentPage, setExitCommentPage] = useState(1);
+  const [filtersOpen, setFiltersOpen] = useState(true);
 
   const records = useMemo(() => applyFilters(ALL_RECORDS, filters), [filters]);
 
@@ -167,53 +168,91 @@ export default function Dashboard() {
   const pagedExitComments = exCmts.slice((exitCommentPage - 1) * COMMENTS_PER_PAGE, exitCommentPage * COMMENTS_PER_PAGE);
 
   return (
-    <div style={{ padding: `20px ${GAP}px 40px`, display: 'flex', flexDirection: 'column', gap: GAP }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-      {/* ═══ TÍTULO + FILTROS ═══ */}
-      <div>
-        <h1 style={{ fontSize: 18, fontWeight: 700, color: C.ink, margin: '0 0 4px', letterSpacing: '-0.3px' }}>
+      {/* ═══ HEADER FLOTANTE ═══ */}
+      <div style={{
+        position: 'sticky', top: 0, zIndex: 20,
+        background: '#fff',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+        padding: '16px 24px 0',
+      }}>
+        <h1 style={{ fontSize: 18, fontWeight: 700, color: C.ink, margin: 0, letterSpacing: '-0.2px', lineHeight: 1.3 }}>
           Voz del Colaborador · Mutualista Pichincha
         </h1>
-        <p style={{ fontSize: 12, color: C.muted, margin: '0 0 14px' }}>
+        <p style={{ fontSize: 11.5, color: C.muted, margin: '2px 0 12px' }}>
           ¿Cómo es la experiencia del colaborador durante su ciclo de vida y cuáles son los principales impulsores de satisfacción y riesgo de salida?
         </p>
 
-        {/* Barra de filtros — flat */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#fafafa', border: '1px solid #e8e8e8', borderRadius: 10 }}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-            <path d="M3 4h18l-7 8v6l-4 2v-8L3 4z" fill={C.muted} />
-          </svg>
-          <span style={{ fontSize: 12, fontWeight: 600, color: C.muted, flexShrink: 0 }}>Filtros</span>
-          <div style={{ width: 1, height: 14, background: '#d9d9d9', marginRight: 2, flexShrink: 0 }} />
-          {([
-            ['area', 'Área', FILTER_OPTIONS.area],
-            ['ciudad', 'Ciudad', FILTER_OPTIONS.ciudad],
-            ['nivel', 'Cargo', FILTER_OPTIONS.nivel],
-            ['antiguedad', 'Antigüedad', FILTER_OPTIONS.antiguedad],
-            ['genero', 'Género', FILTER_OPTIONS.genero],
-          ] as [keyof Filters, string, string[]][]).map(([key, label, opts]) => (
-            <Select
-              key={key}
-              mode="multiple"
-              maxTagCount={0}
-              maxTagPlaceholder={(o) => `${o.length} sel.`}
-              allowClear
-              size="small"
-              placeholder={label}
-              value={filters[key]}
-              onChange={(vals) => setFilter(key, vals as string[])}
-              options={opts.map(o => ({ value: o, label: o }))}
-              style={{ flex: 1, minWidth: 100 }}
-            />
-          ))}
-          {activeFilterCount > 0 && (
-            <Button size="small" type="text" onClick={() => setFilters(EMPTY_FILTERS)}
-              style={{ fontSize: 11, color: C.detractor, flexShrink: 0 }}>
-              Limpiar
-            </Button>
-          )}
-        </div>
+        {/* Fila de filtros colapsable */}
+        <motion.div
+          initial={false}
+          animate={{ height: filtersOpen ? 'auto' : 0, opacity: filtersOpen ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+          style={{ overflow: 'hidden' }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingBottom: 14 }}>
+            {/* Icono + label Filtros */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path d="M3 4h18l-7 8v6l-4 2v-8L3 4z" fill={C.primary} />
+              </svg>
+              <span style={{ fontSize: 12, fontWeight: 600, color: C.ink }}>Filtros</span>
+            </div>
+            <div style={{ width: 1, height: 16, background: '#e0e0e0', flexShrink: 0 }} />
+            {/* Selects individualmente bordeados */}
+            {([
+              ['area', 'Área...', FILTER_OPTIONS.area],
+              ['ciudad', 'Ciudad...', FILTER_OPTIONS.ciudad],
+              ['nivel', 'Cargo...', FILTER_OPTIONS.nivel],
+              ['antiguedad', 'Antigüedad...', FILTER_OPTIONS.antiguedad],
+              ['genero', 'Género...', FILTER_OPTIONS.genero],
+            ] as [keyof Filters, string, string[]][]).map(([key, label, opts]) => (
+              <Select
+                key={key}
+                mode="multiple"
+                maxTagCount={0}
+                maxTagPlaceholder={(o) => `${o.length} sel.`}
+                allowClear
+                variant="outlined"
+                size="small"
+                placeholder={label}
+                value={filters[key]}
+                onChange={(vals) => setFilter(key, vals as string[])}
+                options={opts.map(o => ({ value: o, label: o }))}
+                style={{ flex: 1, minWidth: 110 }}
+                styles={{ popup: { root: { borderRadius: 8 } } }}
+              />
+            ))}
+            {activeFilterCount > 0 && (
+              <Button size="small" type="text" onClick={() => setFilters(EMPTY_FILTERS)}
+                style={{ fontSize: 11, color: C.detractor, flexShrink: 0, padding: '0 6px' }}>
+                Limpiar
+              </Button>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Botón collapse pegado al borde derecho */}
+        <button
+          onClick={() => setFiltersOpen(o => !o)}
+          style={{
+            position: 'absolute', top: 14, right: 20,
+            width: 28, height: 28, borderRadius: '50%',
+            border: '1px solid #e8e8e8', background: '#fff',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: 'pointer', fontSize: 12, color: C.muted,
+            transform: filtersOpen ? 'rotate(0deg)' : 'rotate(180deg)',
+            transition: 'transform 0.2s',
+          }}
+          aria-label={filtersOpen ? 'Colapsar filtros' : 'Expandir filtros'}
+        >
+          ↑
+        </button>
       </div>
+
+      {/* ═══ CONTENIDO ═══ */}
+      <div style={{ padding: `${GAP}px ${GAP}px 40px`, display: 'flex', flexDirection: 'column', gap: GAP }}>
 
       {/* ═══ KPI ROW ═══ */}
       <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP }}>
@@ -483,6 +522,7 @@ export default function Dashboard() {
           </div>
         </section>
       )}
+      </div>
     </div>
   );
 }

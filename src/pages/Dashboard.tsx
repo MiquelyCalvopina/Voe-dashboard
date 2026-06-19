@@ -122,11 +122,13 @@ export default function Dashboard() {
 
   const expRecords = useMemo(() => records.filter(r => r.source !== 'Ex Colaboradores'), [records]);
   const allFactors = useMemo(() => factorAverages(records), [records]);
+  const expFactors = useMemo(() => factorAverages(expRecords), [expRecords]);
   const cmts = useMemo(() => comments(expRecords), [expRecords]);
   const exThemes = useMemo(() => exitThemes(records), [records]);
   const exCmts = useMemo(() => exitComments(records), [records]);
 
-  const reliableFactors = allFactors.filter(f => f.gap !== null);
+  // Fortalezas / áreas a mejorar se calculan solo con colaboradores activos
+  const reliableFactors = expFactors.filter(f => f.gap !== null);
   const byScoreDesc = [...reliableFactors].sort((a, b) => b.score - a.score);
   const top5 = byScoreDesc.slice(0, 5);                          // mejor a peor (mayor a menor)
   const bottom5 = byScoreDesc.slice(-5).sort((a, b) => a.score - b.score); // peor a mejor (menor a mayor)
@@ -422,6 +424,7 @@ export default function Dashboard() {
       </section>
 
       {/* ═══ SECCIÓN: VOZ DEL COLABORADOR ═══ */}
+      {expRecords.length > 0 && (
       <section>
         <SectionHeader title="Voz del Colaborador" subtitle="Qué dicen los colaboradores activos en sus comentarios" />
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: GAP, alignItems: 'stretch' }}>
@@ -448,6 +451,7 @@ export default function Dashboard() {
           />
         </div>
       </section>
+      )}
 
       {/* ═══ SECCIÓN: EX COLABORADORES ═══ */}
       {exStats.total > 0 && (

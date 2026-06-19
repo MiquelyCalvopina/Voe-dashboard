@@ -203,9 +203,8 @@ export default function Dashboard() {
               </Button>
             )}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 8 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 8 }}>
             {([
-              ['source', 'Tipo colaborador', FILTER_OPTIONS.source],
               ['area', 'Área', FILTER_OPTIONS.area],
               ['ciudad', 'Ciudad', FILTER_OPTIONS.ciudad],
               ['nivel', 'Cargo', FILTER_OPTIONS.nivel],

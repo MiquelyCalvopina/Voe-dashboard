@@ -25,7 +25,7 @@ export default function Sidebar() {
         top: 0,
         left: 0,
         width: '60px',
-        height: '100vh',
+        height: '100%',
         backgroundColor: '#ffffff',
         display: 'flex',
         flexDirection: 'column',

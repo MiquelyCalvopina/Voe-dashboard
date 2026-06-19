@@ -168,8 +168,10 @@ export function exitThemes(records: Record[]) {
   return [...m.entries()].map(([tema, count]) => ({ tema, count })).sort((a, b) => b.count - a.count);
 }
 
+// Comentarios de ex-colaboradores: su comentario principal (motivo del eNPS),
+// que está presente para todos los ex-colaboradores que respondieron.
 export function exitComments(records: Record[]) {
-  return records.filter(r => r.exit_comment).map(r => ({
-    comment: r.exit_comment!, tema: r.exit_tema, sentimiento: r.exit_sentimiento, area: r.area, cat: r.cat,
+  return records.filter(r => r.source === 'Ex Colaboradores' && r.comment).map(r => ({
+    comment: r.comment!, tema: r.tema, sentimiento: r.sentimiento, area: r.area, cat: r.cat,
   }));
 }

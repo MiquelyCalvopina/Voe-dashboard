@@ -467,7 +467,7 @@ export default function Dashboard() {
                   <CardTitle title="¿Cómo evitar la desvinculación?" sub="Lo que pudo retenerlos, según sus respuestas, de más a menos frecuente" />
                   <RankedBars
                     items={exThemes.map(t => ({ label: t.tema, value: t.count }))}
-                    total={exCmts.length}
+                    total={exThemes.reduce((a, t) => a + t.count, 0)}
                     demoteLast={['Ninguna', 'Otros']}
                   />
                 </Card>

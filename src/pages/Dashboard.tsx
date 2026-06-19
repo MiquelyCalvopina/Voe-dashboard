@@ -127,10 +127,9 @@ export default function Dashboard() {
   const exCmts = useMemo(() => exitComments(records), [records]);
 
   const reliableFactors = allFactors.filter(f => f.gap !== null);
-  const scores = reliableFactors.map(f => f.score).sort((a, b) => a - b);
-  const median = scores.length ? scores[Math.floor(scores.length / 2)] : 3.75;
-  const top5 = reliableFactors.filter(f => f.score >= median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
-  const bottom5 = reliableFactors.filter(f => f.score < median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
+  const byScoreDesc = [...reliableFactors].sort((a, b) => b.score - a.score);
+  const top5 = byScoreDesc.slice(0, 5);                          // mejor a peor (mayor a menor)
+  const bottom5 = byScoreDesc.slice(-5).sort((a, b) => a.score - b.score); // peor a mejor (menor a mayor)
 
   const journey = useMemo(() => STAGES.map(stage => {
     const stageFactors = allFactors.filter(f => f.stage === stage.key);
@@ -259,7 +258,7 @@ export default function Dashboard() {
       <div style={{ padding: `${GAP}px ${GAP}px 40px`, display: 'flex', flexDirection: 'column', gap: GAP }}>
 
       {/* ═══ KPI ROW ═══ */}
-      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.7fr 1.4fr', gap: GAP, alignItems: 'start' }}>
 
         {/* Total participantes */}
         <Card delay={0}>
@@ -323,7 +322,7 @@ export default function Dashboard() {
         {/* eNPS por Antigüedad */}
         <Card delay={0.12}>
           <CardTitle title="eNPS por Antigüedad" sub="Click en una barra para filtrar el reporte" />
-          <ResponsiveContainer width="100%" height={175}>
+          <ResponsiveContainer width="100%" height={150}>
             <ComposedChart data={byType} margin={{ top: 20, right: 40, left: -24, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="label" tick={{ fontSize: 10.5, fill: '#595959' }} axisLine={false} tickLine={false} />

@@ -127,10 +127,9 @@ export default function Dashboard() {
   const exCmts = useMemo(() => exitComments(records), [records]);
 
   const reliableFactors = allFactors.filter(f => f.gap !== null);
-  const scores = reliableFactors.map(f => f.score).sort((a, b) => a - b);
-  const median = scores.length ? scores[Math.floor(scores.length / 2)] : 3.75;
-  const top5 = reliableFactors.filter(f => f.score >= median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
-  const bottom5 = reliableFactors.filter(f => f.score < median).sort((a, b) => (b.gap ?? 0) - (a.gap ?? 0)).slice(0, 5);
+  const byScoreDesc = [...reliableFactors].sort((a, b) => b.score - a.score);
+  const top5 = byScoreDesc.slice(0, 5);                          // mejor a peor (mayor a menor)
+  const bottom5 = byScoreDesc.slice(-5).sort((a, b) => a.score - b.score); // peor a mejor (menor a mayor)
 
   const journey = useMemo(() => STAGES.map(stage => {
     const stageFactors = allFactors.filter(f => f.stage === stage.key);
